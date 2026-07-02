@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ian Sequeira — Fractional HubSpot &amp; RevOps for Sales-Led Teams</title>
+<meta name="description" content="Fractional HubSpot admin for sales-led teams: portal audits, territory &amp; scoring models, trustworthy reporting, and monitored automation. Start with a free 30-minute CRM audit.">
+<meta property="og:title" content="Ian Sequeira — HubSpot Operations for Sales-Led Teams">
+<meta property="og:description" content="Portal audits, territory &amp; scoring models, trustworthy reporting, and monitored automation — built and maintained so your reps don't have to.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://isequeira251.github.io/">
+<meta property="og:image" content="https://isequeira251.github.io/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta property="og:image:alt" content="Ian Sequeira — Fractional HubSpot &amp; RevOps for Sales-Led Teams">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#16263F">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2316263F'/%3E%3Ctext x='50' y='68' font-size='52' font-family='Arial,sans-serif' font-weight='bold' fill='%23E2683C' text-anchor='middle'%3EIS%3C/text%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Ian Sequeira — HubSpot Operations",
+  "url": "https://isequeira251.github.io/",
+  "description": "Fractional HubSpot and revenue operations for sales-led teams: portal audits, territory and scoring models, reporting, and monitored automation.",
+  "founder": { "@type": "Person", "name": "Ian Sequeira", "sameAs": "https://github.com/isequeira251" }
+}
+</script>
+<style>
+  :root {
+    --navy: #16263F;
+    --navy-deep: #0E1A2E;
+    --orange: #E2683C;
+    --orange-dark: #C4512A;
+    --orange-deep: #B2461F;
+    --teal: #2E7D7B;
+    --teal-dark: #226260;
+    --ink: #1D2B3F;
+    --muted: #5A6A80;
+    --line: #E3E8EF;
+    --paper: #FFFFFF;
+    --wash: #F6F8FA;
+    --wash-warm: #FBF7F3;
+    --radius: 14px;
+    --shadow: 0 1px 2px rgba(22,38,63,.06), 0 8px 24px -12px rgba(22,38,63,.18);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--teal-dark); }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--orange); outline-offset: 2px; border-radius: 4px; }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--orange-deep); margin-bottom: 14px;
+  }
+  h1, h2, h3 { line-height: 1.18; color: var(--navy); letter-spacing: -0.015em; }
+  h2 { font-size: clamp(26px, 4vw, 36px); margin-bottom: 12px; }
+  .lede { font-size: clamp(16px, 2vw, 19px); color: var(--muted); max-width: 62ch; }
+  section { padding: 72px 0; }
+
+  /* Header */
+  header.site {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,.92); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .brand-mark {
+    width: 34px; height: 34px; border-radius: 9px; background: var(--navy);
+    color: var(--orange); font-weight: 800; font-size: 15px;
+    display: grid; place-items: center; letter-spacing: .02em;
+  }
+  .brand-name { font-weight: 700; color: var(--navy); font-size: 16px; }
+  .brand-name small { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+  nav.links { display: flex; gap: 26px; align-items: center; }
+  nav.links a { text-decoration: none; color: var(--ink); font-size: 15px; font-weight: 500; }
+  nav.links a:hover { color: var(--orange-dark); }
+  nav.links a.cta { color: #fff; }
+  @media (max-width: 780px) { nav.links a:not(.cta) { display: none; } }
+  @media (max-width: 430px) {
+    .brand-name small { display: none; }
+    .nav .btn { padding: 11px 14px; font-size: 14px; }
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-block; padding: 13px 22px; border-radius: 10px; font-weight: 700;
+    font-size: 15.5px; text-decoration: none; border: 2px solid transparent; cursor: pointer;
+    transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+  }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-primary { background: var(--navy); color: #fff; box-shadow: var(--shadow); }
+  .btn-primary:hover { background: var(--navy-deep); }
+  .btn-accent { background: var(--orange-dark); color: #fff; box-shadow: var(--shadow); }
+  .btn-accent:hover { background: var(--orange-deep); }
+  .btn-ghost { border-color: var(--line); color: var(--navy); background: #fff; }
+  .btn-ghost:hover { border-color: var(--navy); }
+
+  /* Hero */
+  .hero { padding: 84px 0 64px; background:
+    radial-gradient(1100px 420px at 85% -10%, rgba(46,125,123,.10), transparent 60%),
+    radial-gradient(900px 420px at -10% 0%, rgba(226,104,60,.08), transparent 55%),
+    var(--paper); }
+  .hero h1 { font-size: clamp(34px, 5.6vw, 56px); max-width: 17ch; margin-bottom: 18px; }
+  .hero h1 em { font-style: normal; color: var(--orange-dark); }
+  .hero .lede { margin-bottom: 30px; }
+  .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+  .hero-note { font-size: 14px; color: var(--muted); }
+
+  /* Stat band */
+  .stats { background: var(--navy); color: #fff; padding: 42px 0; }
+  .stats .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+  @media (max-width: 880px) { .stats .grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat b { display: block; font-size: clamp(22px, 3vw, 30px); color: #F4B79E; letter-spacing: -.01em; line-height: 1.15; margin-bottom: 6px; }
+  .stat span { font-size: 14px; color: #C7D2E2; line-height: 1.45; display: block; }
+
+  /* Problem */
+  .problem { background: var(--wash); }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .chip {
+    background: #fff; border: 1px solid var(--line); border-radius: 999px;
+    padding: 8px 16px; font-size: 14px; font-weight: 600; color: var(--navy);
+  }
+  .chip::before { content: "✕ "; content: "✕ " / ""; color: var(--orange-deep); font-weight: 800; }
+
+  /* Cards */
+  .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 36px; }
+  @media (max-width: 780px) { .cards { grid-template-columns: 1fr; } }
+  .card {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 26px; box-shadow: var(--shadow);
+  }
+  .card h3 { font-size: 19px; margin-bottom: 8px; }
+  .card p { font-size: 15px; color: var(--muted); }
+  .card .num {
+    display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 9px;
+    background: var(--wash-warm); color: var(--orange-deep); font-weight: 800; font-size: 15px;
+    margin-bottom: 14px; border: 1px solid #F0DFD3;
+  }
+
+  /* Ladder */
+  .ladder { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
+  @media (max-width: 780px) { .ladder { grid-template-columns: 1fr; } }
+  .rung { border-left: 4px solid var(--teal); background: #fff; border-radius: 0 var(--radius) var(--radius) 0; padding: 22px 22px 22px 20px; border-top: 1px solid var(--line); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .rung .step { font-size: 12.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--teal-dark); margin-bottom: 8px; }
+  .rung h3 { font-size: 18px; margin-bottom: 6px; }
+  .rung p { font-size: 14.5px; color: var(--muted); }
+
+  /* Work */
+  .work { background: var(--wash); }
+  .case { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 30px; margin-top: 24px; }
+  .case .tag { display: inline-block; font-size: 12.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--teal-dark); background: #E8F2F1; border-radius: 999px; padding: 5px 12px; margin-bottom: 14px; }
+  .case h3 { font-size: 21px; margin-bottom: 10px; }
+  .case p { font-size: 15.5px; color: var(--ink); margin-bottom: 10px; max-width: 78ch; }
+  .case p.quiet { color: var(--muted); font-size: 15px; }
+  .case ul { margin: 12px 0 4px 20px; font-size: 15px; color: var(--ink); }
+  .case li { margin-bottom: 7px; max-width: 75ch; }
+  .case li::marker { color: var(--orange-dark); }
+  .kpis { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .kpi { background: var(--wash-warm); border: 1px solid #F0DFD3; color: var(--navy); border-radius: 8px; padding: 7px 12px; font-size: 13.5px; font-weight: 700; }
+
+  /* Artifacts */
+  .artifact { display: flex; flex-direction: column; }
+  .artifact .go { margin-top: auto; padding-top: 16px; font-weight: 700; font-size: 15px; }
+  .artifact .go a { text-decoration: none; }
+  .artifact .go a:hover { text-decoration: underline; }
+  .pill { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #fff; background: var(--teal); border-radius: 999px; padding: 4px 11px; margin-bottom: 12px; }
+
+  /* Principles */
+  .principles { background: var(--navy); color: #fff; }
+  .principles h2, .principles h3 { color: #fff; }
+  .principles .eyebrow { color: #F4B79E; }
+  .principles .lede { color: #C7D2E2; }
+  .pgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 34px; }
+  @media (max-width: 780px) { .pgrid { grid-template-columns: 1fr; } }
+  .principle { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius); padding: 22px; }
+  .principle h3 { font-size: 17px; margin-bottom: 6px; }
+  .principle h3::before { content: "— "; color: var(--orange); }
+  .principle p { font-size: 14.5px; color: #C7D2E2; }
+
+  /* About + contact */
+  .about p { max-width: 70ch; font-size: 16px; margin-bottom: 14px; }
+  .contact { background: var(--wash-warm); text-align: center; }
+  .contact h2 { margin-bottom: 14px; }
+  .contact .lede { margin: 0 auto 30px; }
+  .contact-links { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  footer { border-top: 1px solid var(--line); padding: 26px 0; font-size: 13.5px; color: var(--muted); }
+  footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  footer a { color: var(--muted); }
+
+  .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
+  .js .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; } }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Ian Sequeira — HubSpot Operations, back to top">
+      <span class="brand-mark" aria-hidden="true">IS</span>
+      <span class="brand-name">Ian Sequeira<small>HubSpot Operations</small></span>
+    </a>
+    <nav class="links" aria-label="Site">
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#artifacts">Live tools</a>
+      <a href="#how">How I work</a>
+      <a class="btn btn-accent cta" href="https://calendar.app.google/v3L6z6QH2hd1MTpt9">Book a free audit</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="wrap">
+      <span class="eyebrow">Fractional HubSpot &amp; RevOps</span>
+      <h1 id="hero-h">HubSpot operations for <em>sales-led teams</em>.</h1>
+      <p class="lede">Your reps sell — they don't maintain CRM fields. So data drifts, reporting can't be trusted, and leadership flies blind. The fix isn't more rep discipline — it's <strong>automation that maintains the data</strong> and <strong>reporting that tells the truth</strong>. That's what I build, and I keep it running.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-accent" href="https://calendar.app.google/v3L6z6QH2hd1MTpt9">Book a free 30-min CRM audit</a>
+        <a class="btn btn-ghost" href="https://isequeira251.github.io/crm-health-check/">Take the 1-minute health check</a>
+      </div>
+      <p class="hero-note">The audit is a live read of your actual portal with a prioritized fix list — yours to keep whether or not we work together.</p>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats" aria-label="Selected results">
+    <div class="wrap grid">
+      <div class="stat"><b>~$20</b><span>of API cost to AI-classify tens of thousands of contacts into buying-committee roles — in 48 hours</span></div>
+      <div class="stat"><b>~2.5×</b><span>the win rate for multi-threaded vs single-threaded deals — found in a client's own closed-deal history</span></div>
+      <div class="stat"><b>~5×</b><span>undercount in held-meeting reporting found and corrected</span></div>
+      <div class="stat"><b>Daily</b><span>health checks on every scheduled automation I run — monitored, not fire-and-forget</span></div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="problem reveal" aria-labelledby="problem-h">
+    <div class="wrap">
+      <span class="eyebrow">The pattern</span>
+      <h2 id="problem-h">Sales teams outgrow their HubSpot.</h2>
+      <p class="lede">The portal was set up in a week, three years ago. Since then: nobody owns the records, activity lives in untracked notes, and every dashboard answers a slightly different question. Six things quietly break almost every portal I open:</p>
+      <div class="chips" role="list">
+        <span class="chip" role="listitem">Record ownership</span>
+        <span class="chip" role="listitem">Activity logging</span>
+        <span class="chip" role="listitem">Reporting dates</span>
+        <span class="chip" role="listitem">Pipeline design</span>
+        <span class="chip" role="listitem">Segmentation</span>
+        <span class="chip" role="listitem">Duplicates</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="reveal" aria-labelledby="services-h">
+    <div class="wrap">
+      <span class="eyebrow">Services</span>
+      <h2 id="services-h">Four ways I keep a portal healthy.</h2>
+      <p class="lede">Audits, territory &amp; scoring models, reporting, and automation — built and maintained so your reps don't have to.</p>
+      <div class="cards">
+        <div class="card">
+          <span class="num" aria-hidden="true">1</span>
+          <h3>Portal audits</h3>
+          <p>A fixed-scope, <strong>read-only</strong> review of data hygiene, workflow cruft, pipeline structure, and coverage gaps — delivered as a prioritized fix list before anything in your portal gets touched.</p>
+        </div>
+        <div class="card">
+          <span class="num" aria-hidden="true">2</span>
+          <h3>Territory &amp; market scoring</h3>
+          <p>Territory models, heat-index and ICP scoring, buying-committee role classification, and owner-assignment logic — backfilled across thousands of records via the API, then kept current automatically.</p>
+        </div>
+        <div class="card">
+          <span class="num" aria-hidden="true">3</span>
+          <h3>Reporting &amp; dashboards</h3>
+          <p>Daily activity digests in leadership's inbox, exec workbooks that regenerate themselves, and dashboards that know the difference between <em>booked</em> and <em>occurred</em> — so the numbers survive scrutiny.</p>
+        </div>
+        <div class="card">
+          <span class="num" aria-hidden="true">4</span>
+          <h3>Automation &amp; integrations</h3>
+          <p>Custom workflow actions, AI-assisted enrichment and dedup pipelines, and syncs to the tools around HubSpot. Every scheduled job I ship is health-checked daily.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENGAGEMENT LADDER -->
+  <section class="problem reveal" aria-labelledby="ladder-h" style="padding-top: 0;">
+    <div class="wrap" style="padding-top: 72px;">
+      <span class="eyebrow">Engagement model</span>
+      <h2 id="ladder-h">Start with an audit. Continue on retainer.</h2>
+      <p class="lede">Every engagement starts with a free 30-minute live look at your actual portal — no deck, no discovery-call theater.</p>
+      <div class="ladder">
+        <div class="rung">
+          <div class="step">Step 1</div>
+          <h3>Fixed-scope audit</h3>
+          <p>A one-time portal audit with a prioritized findings document and a clear remediation plan. Read-only by design.</p>
+        </div>
+        <div class="rung">
+          <div class="step">Step 2</div>
+          <h3>Remediation sprint</h3>
+          <p>Property infrastructure, backfills, workflows, and reporting built against the audit's punch list — dry-run first, then applied.</p>
+        </div>
+        <div class="rung">
+          <div class="step">Step 3</div>
+          <h3>Ongoing retainer</h3>
+          <p>A monthly block for admin, new reporting, and automation — request-capped, so you're buying outcomes, not hours on a timer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" class="work reveal" aria-labelledby="work-h">
+    <div class="wrap">
+      <span class="eyebrow">Selected work</span>
+      <h2 id="work-h">Recent engagements.</h2>
+      <p class="lede">Client names withheld by agreement — the numbers are real. Every engagement below started from data the client already owned: no list purchases, no new tooling spend. Organize, score, and visualize what you have.</p>
+
+      <article class="case">
+        <span class="tag">Construction-tech SaaS · ongoing</span>
+        <h3>From a portal nobody trusted to a working revenue engine.</h3>
+        <p class="quiet">A small sales org with thousands of contacts and hundreds of deals — but almost none of it owned, most logged activity empty, and significant renewal-pipeline coverage gaps. Nobody could trust a single report.</p>
+        <ul>
+          <li>Started read-only: a four-report portal audit (data hygiene, pipeline, renewals coverage, workflow cruft) that drove every build decision after it.</li>
+          <li>Territory and market-tier models operationalized from the client's own strategy spreadsheet and backfilled across roughly 10,000 records — nearly 3,000 API writes, zero failures — lifting owner coverage from near-zero to about a quarter of the database in one pass.</li>
+          <li>Weekly lead-score history snapshots and trend dashboards — score history HubSpot itself doesn't keep.</li>
+          <li>Note-to-meeting conversion and association-based activity logic that corrected a ~5× undercount in held meetings.</li>
+          <li>Daily leadership digest email and a monthly exec sales workbook that regenerates itself from a read-only pull.</li>
+          <li>A weekly AI competitive-intelligence agent tracking 10 competitors and delivering sourced briefs with counter-marketing angles — zero recurring manual effort.</li>
+          <li>A post-signature customer-activation system (14 custom properties, 9 workflows with a 24h/48h/72h escalation ladder) built and live-validated end-to-end behind canary guards that kept every production closed-won deal untouched.</li>
+        </ul>
+        <div class="kpis">
+          <span class="kpi">Owner coverage: near-zero → ~25%</span>
+          <span class="kpi">~3,000 writes · 0 failures</span>
+          <span class="kpi">~5× activity undercount fixed</span>
+        </div>
+      </article>
+
+      <article class="case">
+        <span class="tag">Industrial-compliance SaaS · ongoing</span>
+        <h3>Tens of thousands of contacts organized, scored, and explained — in days.</h3>
+        <p class="quiet">A large existing database with no structure on top: no buying-committee roles, no account scoring, and no record of why deals were being lost. The brief was explicit — organize what we already own.</p>
+        <ul>
+          <li>AI stakeholder-role enrichment: tens of thousands of titled contacts classified into a six-role buying-committee taxonomy within 48 hours, for roughly $20 of API cost — with a confidence gate that wrote only high-confidence labels and routed the rest to human review instead of polluting the CRM.</li>
+          <li>A two-tier design so new contacts get labeled in real time by mined keyword rules, and the AI only handles what keywords can't.</li>
+          <li>Fit-based A–D account scoring written to thousands of companies, refreshed weekly with historical snapshots.</li>
+          <li>Conversion analysis across hundreds of deals that found the real win levers: multi-threaded deals won at roughly 2.5× the rate of single-threaded ones, and deals with the economic buyer in the room won markedly more often.</li>
+          <li>Loss reasons recovered for over 90% of closed-lost deals from activity timelines — the loss-reason field was blank on every single one.</li>
+          <li>A weekday-morning digest so sales leadership sees portal activity without logging in.</li>
+        </ul>
+        <div class="kpis">
+          <span class="kpi">Tens of thousands classified · ~$20 API cost</span>
+          <span class="kpi">Multi-threaded deals: ~2.5× win rate</span>
+          <span class="kpi">90%+ of lost-deal reasons recovered</span>
+        </div>
+      </article>
+
+      <article class="case">
+        <span class="tag">Fire-protection contractor · completed</span>
+        <h3>Hands-off reporting for a small sales team.</h3>
+        <p class="quiet">700+ deals across three pipelines, and leadership had no daily visibility without logging into HubSpot and building reports themselves.</p>
+        <ul>
+          <li>Weekday portal digest email and a full Excel sales dashboard delivered three times a week — generated and sent entirely unattended.</li>
+          <li>Twice-daily note-to-call conversion so rep activity typed into notes still counted in activity reporting.</li>
+          <li>A rebuilt business-development pipeline based on completed actions instead of intent, plus end-to-end tracking for a new referral channel.</li>
+          <li>When the engagement wrapped, every automation was retired cleanly — decommissioned, not abandoned.</li>
+        </ul>
+        <div class="kpis">
+          <span class="kpi">700+ deals · 3 pipelines</span>
+          <span class="kpi">Daily + 3×/week reporting, unattended</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ARTIFACTS -->
+  <section id="artifacts" class="reveal" aria-labelledby="artifacts-h">
+    <div class="wrap">
+      <span class="eyebrow">Live tools</span>
+      <h2 id="artifacts-h">Don't take my word for it — click around.</h2>
+      <p class="lede">Client work lives in private repos and private portals. These are public, and they're built the same way I build for clients: self-contained, no backend, nothing tracked.</p>
+      <div class="cards">
+        <div class="card artifact">
+          <span class="pill">Free tool</span>
+          <h3>CRM Health Check</h3>
+          <p>A one-minute self-assessment: eight questions, a 0–100 health score, and a personalized list of the first things worth fixing. Your answers never leave your browser.</p>
+          <p class="go"><a href="https://isequeira251.github.io/crm-health-check/">Score your CRM →</a></p>
+        </div>
+        <div class="card artifact">
+          <span class="pill">Sample deliverable</span>
+          <h3>Post-Signature Build Plan</h3>
+          <p>An interactive flowchart of a real (anonymized) HubSpot build: closed-won trigger, trip-wire date stamps, an MRR recognition gate, and an internal escalation ladder — process design, not just workflow clicking.</p>
+          <p class="go"><a href="https://isequeira251.github.io/hubspot-post-signature-flowchart/">Explore the build plan →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <section id="how" class="principles reveal" aria-labelledby="how-h">
+    <div class="wrap">
+      <span class="eyebrow">How I work</span>
+      <h2 id="how-h">Your CRM is production. I treat it that way.</h2>
+      <p class="lede">The real fear in hiring a consultant isn't the invoice — it's someone breaking the system your revenue runs through. Every engagement runs on the same safety rails:</p>
+      <div class="pgrid">
+        <div class="principle">
+          <h3>Read-only first</h3>
+          <p>Audits never write. You get findings and a plan before a single property is created or a single record is touched.</p>
+        </div>
+        <div class="principle">
+          <h3>Dry-run by default</h3>
+          <p>Every write script reports exactly what it <em>would</em> change before it changes anything. Bulk operations ship with the receipts.</p>
+        </div>
+        <div class="principle">
+          <h3>Canary-guarded rollouts</h3>
+          <p>New workflows are built disabled, validated end-to-end against guarded test records in the live portal, and only enabled with your sign-off.</p>
+        </div>
+        <div class="principle">
+          <h3>Monitored, not fire-and-forget</h3>
+          <p>A daily health monitor checks every scheduled job I run and reports pass/fail/overdue each morning. Failures surface in hours — not when you notice a report went stale.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about reveal" aria-labelledby="about-h">
+    <div class="wrap">
+      <span class="eyebrow">About</span>
+      <h2 id="about-h">Ian Sequeira</h2>
+      <p>I run HubSpot infrastructure every day — as an in-house operator and as a fractional consultant for sales-led teams. I work as comfortably at the API layer as in the workflow editor — Python, GitHub Actions, native HubSpot workflows, and AI enrichment where it actually earns its keep.</p>
+      <p>That mix matters: most HubSpot admins stop where the UI stops. Most developers don't understand pipelines, attribution, or what a sales manager actually asks on Monday morning. I sit in the overlap — and everything I build is documented, monitored, and handed to you in a state someone else could maintain.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact reveal" aria-labelledby="contact-h">
+    <div class="wrap">
+      <span class="eyebrow">Get started</span>
+      <h2 id="contact-h">How healthy is your CRM, really?</h2>
+      <p class="lede">Book a free 30-minute live audit of your actual portal. You'll leave with a prioritized fix list — yours to keep whether or not we work together.</p>
+      <div class="contact-links">
+        <a class="btn btn-accent" href="https://calendar.app.google/v3L6z6QH2hd1MTpt9">Book the free audit</a>
+        <a class="btn btn-ghost" href="mailto:sequeiri@gmail.com">Email me</a>
+        <a class="btn btn-ghost" href="https://github.com/isequeira251">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Ian Sequeira · HubSpot Operations</span>
+    <span>No cookies, no trackers, no analytics — this page is a <a href="https://github.com/isequeira251/isequeira251.github.io">single static file</a>.</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    if (!('IntersectionObserver' in window)) {
+      document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  })();
+</script>
+
+</body>
+</html>
