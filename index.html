@@ -127,14 +127,23 @@
   .stat b { display: block; font-size: clamp(22px, 3vw, 30px); color: #F4B79E; letter-spacing: -.01em; line-height: 1.15; margin-bottom: 6px; }
   .stat span { font-size: 14px; color: #C7D2E2; line-height: 1.45; display: block; }
 
-  /* Problem */
+  /* Problem — six expandable failure modes */
   .problem { background: var(--wash); }
-  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
-  .chip {
-    background: #fff; border: 1px solid var(--line); border-radius: 999px;
-    padding: 8px 16px; font-size: 14px; font-weight: 600; color: var(--navy);
+  .breaks { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 26px; }
+  @media (max-width: 780px) { .breaks { grid-template-columns: 1fr; } }
+  .break { background: #fff; border: 1px solid var(--line); border-radius: 12px; }
+  .break summary {
+    list-style: none; cursor: pointer; padding: 13px 18px; min-height: 48px;
+    display: flex; align-items: center; gap: 10px;
+    font-size: 15px; font-weight: 600; color: var(--navy); border-radius: 12px;
   }
-  .chip::before { content: "✕ "; content: "✕ " / ""; color: var(--orange-deep); font-weight: 800; }
+  .break summary::-webkit-details-marker { display: none; }
+  .break summary::before { content: "✕"; content: "✕" / ""; color: var(--orange-deep); font-weight: 800; }
+  .break summary::after { content: "+"; margin-left: auto; color: var(--muted); font-weight: 700; font-size: 19px; line-height: 1; }
+  .break[open] summary::after { content: "–"; }
+  .break summary:hover { background: var(--wash-warm); }
+  .break .fix { padding: 0 18px 16px; font-size: 14.5px; color: var(--muted); }
+  .break .fix strong { color: var(--teal-dark); }
 
   /* Cards */
   .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 36px; }
@@ -204,9 +213,76 @@
   .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
   .js .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; } }
+
+  /* Skip link */
+  .skip {
+    position: absolute; left: -9999px; top: 0; z-index: 100;
+    background: var(--navy); color: #fff; font-weight: 700; font-size: 15px;
+    padding: 12px 20px; border-radius: 0 0 10px 0; text-decoration: none;
+  }
+  .skip:focus { left: 0; }
+
+  /* Scrollspy */
+  nav.links a[aria-current="true"] { color: var(--orange-deep); }
+
+  /* Collapsible case detail */
+  .case-more summary {
+    list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+    min-height: 44px; font-weight: 700; font-size: 15px; color: var(--teal-dark);
+  }
+  .case-more summary::-webkit-details-marker { display: none; }
+  .case-more summary::after { content: "▸"; content: "▸" / ""; font-size: 13px; }
+  .case-more[open] summary::after { content: "▾"; content: "▾" / ""; }
+  .case-more summary:hover { text-decoration: underline; }
+  .work-cta { margin-top: 30px; }
+
+  /* FAQ */
+  .faq-list { max-width: 760px; margin-top: 30px; }
+  .faq { background: #fff; border: 1px solid var(--line); border-radius: 12px; margin-bottom: 12px; }
+  .faq summary {
+    list-style: none; cursor: pointer; padding: 15px 20px; min-height: 48px;
+    display: flex; align-items: center; gap: 12px;
+    font-size: 16px; font-weight: 700; color: var(--navy); border-radius: 12px;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after { content: "+"; margin-left: auto; color: var(--muted); font-weight: 700; font-size: 20px; line-height: 1; }
+  .faq[open] summary::after { content: "–"; }
+  .faq summary:hover { background: var(--wash); }
+  .faq p { padding: 0 20px 18px; font-size: 15px; color: var(--muted); max-width: 66ch; }
+
+  /* Gut-check quiz */
+  .js-only { display: none; }
+  .js .js-only { display: block; }
+  .quiz {
+    max-width: 620px; margin: 0 auto 34px; text-align: left;
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 26px 28px 22px; box-shadow: var(--shadow);
+  }
+  .quiz h3 { font-size: 18px; margin-bottom: 4px; }
+  .quiz .quiet { color: var(--muted); font-size: 14px; margin-bottom: 18px; }
+  .qq { border: 0; padding: 0; margin: 0 0 16px; }
+  .qq legend { font-weight: 600; font-size: 15px; color: var(--ink); margin-bottom: 8px; padding: 0; }
+  .opts { display: flex; gap: 8px; flex-wrap: wrap; }
+  .opt {
+    border: 1.5px solid var(--line); border-radius: 999px; padding: 9px 16px;
+    font-size: 14px; font-weight: 600; color: var(--navy); cursor: pointer;
+    display: inline-flex; align-items: center; gap: 7px; background: #fff; min-height: 40px;
+  }
+  .opt input { accent-color: var(--teal-dark); margin: 0; }
+  .opt:hover { border-color: var(--teal); }
+  .opt:has(input:checked) { border-color: var(--teal-dark); background: #E8F2F1; }
+  .opt:has(input:focus-visible) { outline: 3px solid var(--orange); outline-offset: 2px; }
+  .verdict {
+    display: none; margin-top: 6px; padding: 13px 16px; border-radius: 10px;
+    background: var(--wash-warm); border: 1px solid #F0DFD3;
+    font-size: 15px; font-weight: 600; color: var(--navy);
+  }
+  .verdict.show { display: block; }
 </style>
 </head>
 <body>
+
+<a class="skip" href="#top">Skip to main content</a>
 
 <header class="site">
   <div class="wrap nav">
@@ -219,12 +295,13 @@
       <a href="#work">Work</a>
       <a href="#artifacts">Live tools</a>
       <a href="#how">How I work</a>
+      <a href="#faq">FAQ</a>
       <a class="btn btn-accent cta" href="https://calendar.app.google/v3L6z6QH2hd1MTpt9">Book a free audit</a>
     </nav>
   </div>
 </header>
 
-<main id="top">
+<main id="top" tabindex="-1">
 
   <!-- HERO -->
   <section class="hero" aria-labelledby="hero-h">
@@ -255,14 +332,32 @@
     <div class="wrap">
       <span class="eyebrow">The pattern</span>
       <h2 id="problem-h">Sales teams outgrow their HubSpot.</h2>
-      <p class="lede">The portal was set up in a week, three years ago. Since then: nobody owns the records, activity lives in untracked notes, and every dashboard answers a slightly different question. Six things quietly break almost every portal I open:</p>
-      <div class="chips" role="list">
-        <span class="chip" role="listitem">Record ownership</span>
-        <span class="chip" role="listitem">Activity logging</span>
-        <span class="chip" role="listitem">Reporting dates</span>
-        <span class="chip" role="listitem">Pipeline design</span>
-        <span class="chip" role="listitem">Segmentation</span>
-        <span class="chip" role="listitem">Duplicates</span>
+      <p class="lede">The portal was set up in a week, three years ago. Since then: nobody owns the records, activity lives in untracked notes, and every dashboard answers a slightly different question. Six things quietly break almost every portal I open — expand any of them:</p>
+      <div class="breaks">
+        <details class="break">
+          <summary>Record ownership</summary>
+          <p class="fix">Deals and companies with no owner get worked by nobody, and reporting by rep becomes fiction. <strong>The fix:</strong> assignment rules built from your actual territories, backfilled across the whole database in one pass, then kept current automatically.</p>
+        </details>
+        <details class="break">
+          <summary>Activity logging</summary>
+          <p class="fix">Reps type real work into notes, where dashboards can't count it — I've seen held meetings undercounted five-fold. <strong>The fix:</strong> automation that converts notes into countable calls and meetings, so credit lands without changing how reps work.</p>
+        </details>
+        <details class="break">
+          <summary>Reporting dates</summary>
+          <p class="fix">Created, booked, and occurred are three different dates, and most dashboards mix them freely. <strong>The fix:</strong> one agreed definition per report, enforced by properties instead of memory.</p>
+        </details>
+        <details class="break">
+          <summary>Pipeline design</summary>
+          <p class="fix">Stages that describe hope ("proposal coming") instead of completed actions make every forecast a guess. <strong>The fix:</strong> stages gated on things that verifiably happened.</p>
+        </details>
+        <details class="break">
+          <summary>Segmentation</summary>
+          <p class="fix">Without roles, tiers, or territories, every list is "everyone" and no campaign can be measured. <strong>The fix:</strong> scoring and classification written onto the records themselves, refreshed on a schedule.</p>
+        </details>
+        <details class="break">
+          <summary>Duplicates</summary>
+          <p class="fix">Two records for one company split the relationship's history and double-count the pipeline. <strong>The fix:</strong> assisted dedup that merges the obvious and routes the judgment calls to a human.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -335,6 +430,8 @@
         <span class="tag">Construction-tech SaaS · ongoing</span>
         <h3>From a portal nobody trusted to a working revenue engine.</h3>
         <p class="quiet">A small sales org with thousands of contacts and hundreds of deals — but almost none of it owned, most logged activity empty, and significant renewal-pipeline coverage gaps. Nobody could trust a single report.</p>
+        <details class="case-more">
+        <summary>See what was built</summary>
         <ul>
           <li>Started read-only: a four-report portal audit (data hygiene, pipeline, renewals coverage, workflow cruft) that drove every build decision after it.</li>
           <li>Territory and market-tier models operationalized from the client's own strategy spreadsheet and backfilled across roughly 10,000 records — nearly 3,000 API writes, zero failures — lifting owner coverage from near-zero to about a quarter of the database in one pass.</li>
@@ -344,6 +441,7 @@
           <li>A weekly AI competitive-intelligence agent tracking 10 competitors and delivering sourced briefs with counter-marketing angles — zero recurring manual effort.</li>
           <li>A post-signature customer-activation system (14 custom properties, 9 workflows with a 24h/48h/72h escalation ladder) built and live-validated end-to-end behind canary guards that kept every production closed-won deal untouched.</li>
         </ul>
+        </details>
         <div class="kpis">
           <span class="kpi">Owner coverage: near-zero → ~25%</span>
           <span class="kpi">~3,000 writes · 0 failures</span>
@@ -355,6 +453,8 @@
         <span class="tag">Industrial-compliance SaaS · ongoing</span>
         <h3>Tens of thousands of contacts organized, scored, and explained — in days.</h3>
         <p class="quiet">A large existing database with no structure on top: no buying-committee roles, no account scoring, and no record of why deals were being lost. The brief was explicit — organize what we already own.</p>
+        <details class="case-more">
+        <summary>See what was built</summary>
         <ul>
           <li>AI stakeholder-role enrichment: tens of thousands of titled contacts classified into a six-role buying-committee taxonomy within 48 hours, for roughly $20 of API cost — with a confidence gate that wrote only high-confidence labels and routed the rest to human review instead of polluting the CRM.</li>
           <li>A two-tier design so new contacts get labeled in real time by mined keyword rules, and the AI only handles what keywords can't.</li>
@@ -363,6 +463,7 @@
           <li>Loss reasons recovered for over 90% of closed-lost deals from activity timelines — the loss-reason field was blank on every single one.</li>
           <li>A weekday-morning digest so sales leadership sees portal activity without logging in.</li>
         </ul>
+        </details>
         <div class="kpis">
           <span class="kpi">Tens of thousands classified · ~$20 API cost</span>
           <span class="kpi">Multi-threaded deals: ~2.5× win rate</span>
@@ -374,17 +475,22 @@
         <span class="tag">Fire-protection contractor · completed</span>
         <h3>Hands-off reporting for a small sales team.</h3>
         <p class="quiet">700+ deals across three pipelines, and leadership had no daily visibility without logging into HubSpot and building reports themselves.</p>
+        <details class="case-more">
+        <summary>See what was built</summary>
         <ul>
           <li>Weekday portal digest email and a full Excel sales dashboard delivered three times a week — generated and sent entirely unattended.</li>
           <li>Twice-daily note-to-call conversion so rep activity typed into notes still counted in activity reporting.</li>
           <li>A rebuilt business-development pipeline based on completed actions instead of intent, plus end-to-end tracking for a new referral channel.</li>
           <li>When the engagement wrapped, every automation was retired cleanly — decommissioned, not abandoned.</li>
         </ul>
+        </details>
         <div class="kpis">
           <span class="kpi">700+ deals · 3 pipelines</span>
           <span class="kpi">Daily + 3×/week reporting, unattended</span>
         </div>
       </article>
+
+      <p class="work-cta"><a class="btn btn-accent" href="https://calendar.app.google/v3L6z6QH2hd1MTpt9">Want a read like this on your portal? Book the free audit</a></p>
     </div>
   </section>
 
@@ -448,12 +554,75 @@
     </div>
   </section>
 
+  <!-- FAQ -->
+  <section id="faq" class="problem reveal" aria-labelledby="faq-h">
+    <div class="wrap">
+      <span class="eyebrow">FAQ</span>
+      <h2 id="faq-h">Things people ask before booking.</h2>
+      <div class="faq-list">
+        <details class="faq">
+          <summary>What actually happens in the free 30-minute audit?</summary>
+          <p>A live screen-share look at your actual portal — read-only, no deck. We check ownership coverage, activity logging, pipeline structure, and reporting dates, and you leave with a prioritized fix list that's yours to keep whether or not we go further.</p>
+        </details>
+        <details class="faq">
+          <summary>Do you need admin access?</summary>
+          <p>Not to start — a view-only seat is enough for the audit. If we move into build work, access is scoped to what the work needs, and every bulk change runs as a dry run first so you see exactly what would change before it does.</p>
+        </details>
+        <details class="faq">
+          <summary>Could you break something in our portal?</summary>
+          <p>The whole practice is built around not doing that: audits never write, scripts report what they <em>would</em> change before they change anything, new workflows go live behind canary guards, and a daily monitor watches every job I ship. Nothing is enabled without your sign-off.</p>
+        </details>
+        <details class="faq">
+          <summary>How does pricing work?</summary>
+          <p>The 30-minute audit is free. Remediation work is quoted as a fixed scope from the audit's findings — you approve the number before anything starts — and ongoing help is a flat monthly retainer. No open-ended hourly meter.</p>
+        </details>
+        <details class="faq">
+          <summary>We only have a handful of reps. Are we too small?</summary>
+          <p>Sales-led teams without a dedicated CRM admin are exactly who this is for. The point is getting admin-grade infrastructure without hiring for it.</p>
+        </details>
+        <details class="faq">
+          <summary>We already have an admin or an agency.</summary>
+          <p>That works. Everything I build is documented and handed over in a state someone else can maintain — I'm comfortable being the API-and-automation layer alongside an in-house admin or an agency that owns the marketing side.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT -->
   <section id="contact" class="contact reveal" aria-labelledby="contact-h">
     <div class="wrap">
       <span class="eyebrow">Get started</span>
       <h2 id="contact-h">How healthy is your CRM, really?</h2>
       <p class="lede">Book a free 30-minute live audit of your actual portal. You'll leave with a prioritized fix list — yours to keep whether or not we work together.</p>
+      <div class="quiz js-only" role="group" aria-labelledby="quiz-h">
+        <h3 id="quiz-h">A 20-second gut check</h3>
+        <p class="quiet">Three questions — the verdict appears when you've answered all three.</p>
+        <fieldset class="qq">
+          <legend>Does every open deal have an owner actively working it?</legend>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="q1" value="yes">Yes</label>
+            <label class="opt"><input type="radio" name="q1" value="no">No</label>
+            <label class="opt"><input type="radio" name="q1" value="unsure">Not sure</label>
+          </div>
+        </fieldset>
+        <fieldset class="qq">
+          <legend>Do you trust the activity and meeting counts on your dashboards?</legend>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="q2" value="yes">Yes</label>
+            <label class="opt"><input type="radio" name="q2" value="no">No</label>
+            <label class="opt"><input type="radio" name="q2" value="unsure">Not sure</label>
+          </div>
+        </fieldset>
+        <fieldset class="qq">
+          <legend>Could you pull next quarter's renewals from HubSpot in one view?</legend>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="q3" value="yes">Yes</label>
+            <label class="opt"><input type="radio" name="q3" value="no">No</label>
+            <label class="opt"><input type="radio" name="q3" value="unsure">Not sure</label>
+          </div>
+        </fieldset>
+        <p class="verdict" role="status"></p>
+      </div>
       <div class="contact-links">
         <a class="btn btn-accent" href="https://calendar.app.google/v3L6z6QH2hd1MTpt9">Book the free audit</a>
         <a class="btn btn-ghost" href="https://github.com/isequeira251">GitHub</a>
@@ -482,6 +651,52 @@
       });
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+  })();
+</script>
+
+<script>
+  (function () {
+    // Gut-check quiz: verdict appears once all three questions are answered.
+    var quiz = document.querySelector('.quiz');
+    if (quiz) {
+      var verdicts = [
+        "Genuinely healthy — you're ahead of most portals I open. A free second opinion can confirm it.",
+        "One visible gap usually has a couple of quieter ones behind it. Worth 30 minutes.",
+        "Two of three — that's the exact pattern the audit is built to catch. The fix list is free.",
+        "Textbook case, and very fixable. Book the audit and we'll start with these three."
+      ];
+      quiz.addEventListener('change', function () {
+        var answered = 0, flags = 0;
+        ['q1', 'q2', 'q3'].forEach(function (n) {
+          var sel = quiz.querySelector('input[name="' + n + '"]:checked');
+          if (sel) { answered++; if (sel.value !== 'yes') flags++; }
+        });
+        if (answered === 3) {
+          var v = quiz.querySelector('.verdict');
+          v.textContent = verdicts[flags];
+          v.classList.add('show');
+        }
+      });
+    }
+
+    // Scrollspy: highlight the nav link for the section in view.
+    var navLinks = document.querySelectorAll('nav.links a[href^="#"]');
+    if ('IntersectionObserver' in window && navLinks.length) {
+      var map = {};
+      navLinks.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting && map[e.target.id]) {
+            navLinks.forEach(function (a) { a.removeAttribute('aria-current'); });
+            map[e.target.id].setAttribute('aria-current', 'true');
+          }
+        });
+      }, { rootMargin: '-35% 0px -55% 0px' });
+      Object.keys(map).forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) spy.observe(el);
+      });
+    }
   })();
 </script>
 
