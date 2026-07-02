@@ -635,7 +635,7 @@
 <footer>
   <div class="wrap">
     <span>© 2026 Ian Sequeira · HubSpot Operations</span>
-    <span>No cookies, no trackers, no analytics — this page is a <a href="https://github.com/isequeira251/isequeira251.github.io">single static file</a>.</span>
+    <span>No cookies, no personal tracking — just anonymous aggregate visit counts. This page is a <a href="https://github.com/isequeira251/isequeira251.github.io">single static file</a>.</span>
   </div>
 </footer>
 
@@ -656,7 +656,15 @@
 
 <script>
   (function () {
+    // Anonymous aggregate click events (GoatCounter: no cookies, no PII).
+    function gcEvent(name) {
+      if (window.goatcounter && window.goatcounter.count) {
+        window.goatcounter.count({ path: name, title: name, event: true });
+      }
+    }
+
     // Gut-check quiz: verdict appears once all three questions are answered.
+    var quizCounted = false;
     var quiz = document.querySelector('.quiz');
     if (quiz) {
       var verdicts = [
@@ -675,6 +683,7 @@
           var v = quiz.querySelector('.verdict');
           v.textContent = verdicts[flags];
           v.classList.add('show');
+          if (!quizCounted) { quizCounted = true; gcEvent('quiz-complete/' + flags + '-flags'); }
         }
       });
     }
@@ -697,8 +706,35 @@
         if (el) spy.observe(el);
       });
     }
+
+    // What visitors click, in aggregate: CTAs, tools, expanders.
+    document.querySelectorAll('a[href*="calendar.app.google"]').forEach(function (a) {
+      var sec = a.closest('section');
+      var loc = a.closest('header.site') ? 'header' :
+        (sec && sec.id) ? sec.id : (sec ? sec.className.split(' ')[0] : 'page');
+      a.addEventListener('click', function () { gcEvent('book-audit/' + loc); });
+    });
+    document.querySelectorAll('a[href*="crm-health-check"]').forEach(function (a) {
+      a.addEventListener('click', function () { gcEvent('tool/health-check'); });
+    });
+    document.querySelectorAll('a[href*="post-signature-flowchart"]').forEach(function (a) {
+      a.addEventListener('click', function () { gcEvent('tool/flowchart'); });
+    });
+    document.querySelectorAll('.break').forEach(function (d) {
+      d.addEventListener('toggle', function () {
+        if (d.open) gcEvent('break/' + d.querySelector('summary').textContent.trim().toLowerCase().replace(/\s+/g, '-'));
+      });
+    });
+    document.querySelectorAll('.case-more').forEach(function (d, i) {
+      d.addEventListener('toggle', function () { if (d.open) gcEvent('case-expand/' + (i + 1)); });
+    });
+    document.querySelectorAll('.faq').forEach(function (d, i) {
+      d.addEventListener('toggle', function () { if (d.open) gcEvent('faq/' + (i + 1)); });
+    });
   })();
 </script>
+
+<script data-goatcounter="https://iansequeira.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 
 </body>
 </html>
