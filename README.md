@@ -2,7 +2,7 @@
 
 Personal consulting site for **Ian Sequeira — HubSpot Operations** (fractional HubSpot & RevOps for sales-led teams), served at [isequeira251.github.io](https://isequeira251.github.io/).
 
-Single self-contained `index.html` — no build step, no backend, no dependencies, no analytics.
+Single self-contained `index.html` — no build step, no backend, no dependencies. Visit counts are anonymous and aggregate only (GoatCounter: no cookies, no personal tracking).
 
 Related public artifacts:
 
