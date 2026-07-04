@@ -5,9 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ian Sequeira — Fractional HubSpot &amp; RevOps for Sales-Led Teams</title>
 <meta name="description" content="Fractional HubSpot admin for sales-led teams: portal audits, territory &amp; scoring models, trustworthy reporting, and monitored automation. Start with a free 30-minute CRM audit.">
+<meta name="author" content="Ian Sequeira">
+<link rel="canonical" href="https://isequeira251.github.io/">
 <meta property="og:title" content="Ian Sequeira — HubSpot Operations for Sales-Led Teams">
 <meta property="og:description" content="Portal audits, territory &amp; scoring models, trustworthy reporting, and monitored automation — built and maintained so your reps don't have to.">
 <meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://isequeira251.github.io/">
 <meta property="og:image" content="https://isequeira251.github.io/og.png">
 <meta property="og:image:width" content="1200">
@@ -25,6 +28,44 @@
   "url": "https://isequeira251.github.io/",
   "description": "Fractional HubSpot and revenue operations for sales-led teams: portal audits, territory and scoring models, reporting, and monitored automation.",
   "founder": { "@type": "Person", "name": "Ian Sequeira", "sameAs": "https://github.com/isequeira251" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What actually happens in the free 30-minute audit?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A live screen-share look at your actual portal — read-only, no deck. We check ownership coverage, activity logging, pipeline structure, and reporting dates, and you leave with a prioritized fix list that's yours to keep whether or not we go further." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you need admin access?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Not to start — a view-only seat is enough for the audit. If we move into build work, access is scoped to what the work needs, and every bulk change runs as a dry run first so you see exactly what would change before it does." }
+    },
+    {
+      "@type": "Question",
+      "name": "Could you break something in our portal?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The whole practice is built around not doing that: audits never write, scripts report what they would change before they change anything, new workflows go live behind canary guards, and a daily monitor watches every job I ship. Nothing is enabled without your sign-off." }
+    },
+    {
+      "@type": "Question",
+      "name": "How does pricing work?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The 30-minute audit is free. Remediation work is quoted as a fixed scope from the audit's findings — you approve the number before anything starts — and ongoing help is a flat monthly retainer. No open-ended hourly meter." }
+    },
+    {
+      "@type": "Question",
+      "name": "We only have a handful of reps. Are we too small?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Sales-led teams without a dedicated CRM admin are exactly who this is for. The point is getting admin-grade infrastructure without hiring for it." }
+    },
+    {
+      "@type": "Question",
+      "name": "We already have an admin or an agency.",
+      "acceptedAnswer": { "@type": "Answer", "text": "That works. Everything I build is documented and handed over in a state someone else can maintain — I'm comfortable being the API-and-automation layer alongside an in-house admin or an agency that owns the marketing side." }
+    }
+  ]
 }
 </script>
 <style>
@@ -223,7 +264,7 @@
   .skip:focus { left: 0; }
 
   /* Scrollspy */
-  nav.links a[aria-current="true"] { color: var(--orange-deep); }
+  nav.links a[aria-current="page"] { color: var(--orange-deep); }
 
   /* Collapsible case detail */
   .case-more summary {
@@ -697,7 +738,7 @@
         entries.forEach(function (e) {
           if (e.isIntersecting && map[e.target.id]) {
             navLinks.forEach(function (a) { a.removeAttribute('aria-current'); });
-            map[e.target.id].setAttribute('aria-current', 'true');
+            map[e.target.id].setAttribute('aria-current', 'page');
           }
         });
       }, { rootMargin: '-35% 0px -55% 0px' });
