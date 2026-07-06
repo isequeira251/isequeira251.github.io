@@ -255,6 +255,28 @@
   .artifact .go a:hover { text-decoration: underline; }
   .pill { display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #fff; background: var(--teal); border-radius: 999px; padding: 4px 11px; margin-bottom: 12px; }
 
+  /* Field guides download gate */
+  .guides { background: var(--wash); }
+  .gate {
+    max-width: 640px; margin-top: 30px; background: #fff; border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 26px 28px; box-shadow: var(--shadow);
+  }
+  .gate h3 { font-size: 18px; margin-bottom: 4px; }
+  .gate .quiet { color: var(--muted); font-size: 14px; margin-bottom: 18px; }
+  .gate .field { margin-bottom: 14px; }
+  .gate label { display: block; font-weight: 600; font-size: 14.5px; color: var(--navy); margin-bottom: 5px; }
+  .gate input {
+    width: 100%; padding: 11px 12px; border: 1.5px solid var(--line); border-radius: 8px;
+    font-size: 15px; font-family: inherit; color: var(--ink); background: #fff;
+  }
+  .gate input:focus-visible { outline: 3px solid var(--orange); outline-offset: 1px; }
+  .gate .form-error { display: none; color: var(--orange-deep); font-weight: 600; font-size: 14px; margin-top: 10px; }
+  .gate .form-error.show { display: block; }
+  .gate .privacy { font-size: 13px; color: var(--muted); margin-top: 12px; }
+  .dl-ready { display: none; }
+  .dl-ready.show { display: block; }
+  .dl-ready .dl-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
+
   /* Principles */
   .principles { background: var(--navy); color: #fff; }
   .principles h2, .principles h3 { color: #fff; }
@@ -362,6 +384,7 @@
         <a href="#services">Services</a>
         <a href="#work">Work</a>
         <a href="#artifacts">Live tools</a>
+        <a href="#guides">Guides</a>
         <a href="#how">How I work</a>
         <a href="#faq">FAQ</a>
       </nav>
@@ -589,6 +612,59 @@
     </div>
   </section>
 
+  <!-- FIELD GUIDES -->
+  <section id="guides" class="guides reveal" aria-labelledby="guides-h">
+    <div class="wrap">
+      <span class="eyebrow">Field guides</span>
+      <h2 id="guides-h">The playbooks, in PDF.</h2>
+      <p class="lede">Slide-deck field guides distilled from the portals I work in — six precision lessons each, free in exchange for your work details.</p>
+      <div class="cards">
+        <div class="card artifact">
+          <span class="pill">Field guide PDF</span>
+          <h3>Data Quality &amp; Deduplication</h3>
+          <p>Six lessons on spotting, preventing, and fixing the data problems that silently corrupt a HubSpot portal: duplicates, property pollution, Original Source overwrites, required-field gaps, stale contacts, and import-mode traps.</p>
+          <p class="go"><a href="#gate">Get the PDF ↓</a></p>
+        </div>
+        <div class="card artifact">
+          <span class="pill">Field guide PDF</span>
+          <h3>Workflows &amp; Automation</h3>
+          <p>How to build automations that don't betray you: re-enrollment defaults, timezone delay traps, branch-timing races, suppression vs. goal exits, irreversible CRM mutations, and silent failure monitoring.</p>
+          <p class="go"><a href="#gate">Get the PDF ↓</a></p>
+        </div>
+      </div>
+
+      <div class="gate" id="gate">
+        <form id="gate-form" novalidate>
+          <h3>Unlock both guides</h3>
+          <p class="quiet">Tell me who you are and both PDFs unlock instantly — no email round-trip.</p>
+          <div class="field">
+            <label for="g-email">Work email</label>
+            <input id="g-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="field">
+            <label for="g-phone">Phone</label>
+            <input id="g-phone" name="phone" type="tel" autocomplete="tel" required>
+          </div>
+          <div class="field">
+            <label for="g-company">Company</label>
+            <input id="g-company" name="company" type="text" autocomplete="organization" required>
+          </div>
+          <button class="btn btn-accent" type="submit" id="gate-submit">Unlock the downloads</button>
+          <p class="form-error" role="alert"></p>
+          <p class="privacy">Your details go to me alone — a private spreadsheet, no third-party marketing tools, no cookies. I'll only use them to follow up about HubSpot operations. The rest of this site stays tracking-free.</p>
+        </form>
+        <div class="dl-ready" role="status">
+          <h3>You're in — grab both:</h3>
+          <div class="dl-links">
+            <a class="btn btn-primary" href="downloads/field-guide-data-quality-dedup.pdf" download>Data Quality &amp; Dedup (PDF)</a>
+            <a class="btn btn-primary" href="downloads/field-guide-workflows-automation.pdf" download>Workflows &amp; Automation (PDF)</a>
+          </div>
+        </div>
+        <noscript><p class="privacy">This form needs JavaScript. No JS? Email me and I'll send the PDFs directly.</p></noscript>
+      </div>
+    </div>
+  </section>
+
   <!-- PRINCIPLES -->
   <section id="how" class="principles reveal" aria-labelledby="how-h">
     <div class="wrap">
@@ -783,6 +859,50 @@
           v.classList.add('show');
           if (!quizCounted) { quizCounted = true; gcEvent('quiz-complete/' + flags + '-flags'); }
         }
+      });
+    }
+
+    // Field-guide gate: details go to a private Apps Script endpoint -> Google Sheet.
+    var GATE_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyoCk5HuTD6tgv7BzwImTYBcSRNAx0L5rKQCJetqo9GvYEpth8NGno14FxHjs9BbRGarg/exec';
+    var gateForm = document.getElementById('gate-form');
+    if (gateForm) {
+      var gateReady = document.querySelector('.dl-ready');
+      var unlock = function () {
+        gateForm.style.display = 'none';
+        gateReady.classList.add('show');
+      };
+      try { if (localStorage.getItem('fg-unlocked')) unlock(); } catch (e) {}
+      gateForm.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        var email = document.getElementById('g-email').value.trim();
+        var phone = document.getElementById('g-phone').value.trim();
+        var company = document.getElementById('g-company').value.trim();
+        var err = gateForm.querySelector('.form-error');
+        err.classList.remove('show');
+        if (!email || email.indexOf('@') === -1 || !phone || !company) {
+          err.textContent = 'All three fields are needed to unlock the PDFs.';
+          err.classList.add('show');
+          return;
+        }
+        var btn = document.getElementById('gate-submit');
+        btn.disabled = true; btn.textContent = 'Unlocking…';
+        fetch(GATE_ENDPOINT, {
+          method: 'POST',
+          body: new URLSearchParams({ email: email, phone: phone, company: company, deck: 'both' })
+        }).then(function (res) {
+          if (!res.ok) throw new Error('bad status');
+          try { localStorage.setItem('fg-unlocked', '1'); } catch (e) {}
+          gcEvent('guide-unlock');
+          unlock();
+        }).catch(function () {
+          btn.disabled = false; btn.textContent = 'Unlock the downloads';
+          err.textContent = 'Something went wrong sending the form — try again, or email me and I\'ll send the PDFs directly.';
+          err.classList.add('show');
+        });
+      });
+      document.querySelectorAll('.dl-links a').forEach(function (a) {
+        var which = a.getAttribute('href').indexOf('data-quality') !== -1 ? 'data-quality' : 'workflows';
+        a.addEventListener('click', function () { gcEvent('guide-download/' + which); });
       });
     }
 
