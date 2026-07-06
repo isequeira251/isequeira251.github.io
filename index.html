@@ -273,6 +273,7 @@
   .gate .form-error { display: none; color: var(--orange-deep); font-weight: 600; font-size: 14px; margin-top: 10px; }
   .gate .form-error.show { display: block; }
   .gate .privacy { font-size: 13px; color: var(--muted); margin-top: 12px; }
+  .gate-hp { position: absolute; left: -9999px; top: auto; height: 1px; overflow: hidden; }
   .dl-ready { display: none; }
   .dl-ready.show { display: block; }
   .dl-ready .dl-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 14px; }
@@ -594,7 +595,7 @@
     <div class="wrap">
       <span class="eyebrow">Live tools</span>
       <h2 id="artifacts-h">Don't take my word for it — click around.</h2>
-      <p class="lede">Client work lives in private repos and private portals. These are public, and they're built the same way I build for clients: no backend, no signup, nothing tracked.</p>
+      <p class="lede">Client work lives in private repos and private portals. These are free to use — a quick intro form (work email, phone, company) opens them, and one unlock covers everything on this site, field guides included. What you do inside the tools stays in your browser.</p>
       <div class="cards">
         <div class="card artifact">
           <span class="pill">Free tool</span>
@@ -648,6 +649,10 @@
           <div class="field">
             <label for="g-company">Company</label>
             <input id="g-company" name="company" type="text" autocomplete="organization" required>
+          </div>
+          <div class="gate-hp" aria-hidden="true">
+            <label for="g-website">Website</label>
+            <input id="g-website" name="website" type="text" tabindex="-1" autocomplete="off">
           </div>
           <button class="btn btn-accent" type="submit" id="gate-submit">Unlock the downloads</button>
           <p class="form-error" role="alert"></p>
@@ -888,7 +893,7 @@
         btn.disabled = true; btn.textContent = 'Unlocking…';
         fetch(GATE_ENDPOINT, {
           method: 'POST',
-          body: new URLSearchParams({ email: email, phone: phone, company: company, deck: 'both' })
+          body: new URLSearchParams({ email: email, phone: phone, company: company, website: document.getElementById('g-website').value.trim(), deck: 'both' })
         }).then(function (res) {
           if (!res.ok) throw new Error('bad status');
           try { localStorage.setItem('fg-unlocked', '1'); } catch (e) {}
