@@ -176,52 +176,32 @@
   .pb-dl { margin-top: 28px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
   .pb-dl-note { font-size: 14px; color: var(--muted); }
 
-  /* Contents */
-  .toc { background: var(--wash); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 28px 0; }
-  .toc h2 { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--orange-deep); margin-bottom: 14px; }
-  .toc ol { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px 28px; }
-  @media (max-width: 780px) { .toc ol { grid-template-columns: 1fr; } }
-  .toc li { font-size: 14.5px; display: flex; gap: 10px; }
-  .toc .n { color: var(--muted); font-variant-numeric: tabular-nums; font-weight: 700; }
-  .toc a { text-decoration: none; color: var(--ink); }
-  .toc a:hover { color: var(--orange-dark); text-decoration: underline; }
-
   /* Stages + rules */
   main { padding-bottom: 20px; }
-  .stage { padding: 56px 0 8px; }
+  .stage { padding: 44px 0 4px; }
   .stage-h {
     font-size: 13px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
     color: var(--teal-dark); padding-bottom: 12px; border-bottom: 2px solid var(--line);
   }
-  .rule { padding: 34px 0; border-bottom: 1px solid var(--line); }
+  .rule { padding: 20px 0; border-bottom: 1px solid var(--line); }
   .rule:last-child { border-bottom: 0; }
   .rule-n {
-    display: inline-block; font-size: 12.5px; font-weight: 800; letter-spacing: .1em;
+    display: inline-block; font-size: 11.5px; font-weight: 800; letter-spacing: .08em;
     color: var(--orange-deep); background: var(--wash-warm); border: 1px solid #F0DFD3;
-    border-radius: 7px; padding: 3px 9px; margin-bottom: 12px; font-variant-numeric: tabular-nums;
+    border-radius: 6px; padding: 2px 8px; margin-bottom: 8px; font-variant-numeric: tabular-nums;
   }
-  .rule h3 { font-size: clamp(21px, 2.6vw, 26px); margin-bottom: 12px; }
+  .rule h3 { font-size: 19px; margin-bottom: 8px; }
   .rule h3 a { color: inherit; text-decoration: none; }
   .rule h3 a:hover { color: var(--orange-dark); }
   .rule .rule-stmt {
-    font-size: 17px; color: var(--navy); font-weight: 600; max-width: 74ch;
-    border-left: 3px solid var(--orange); padding-left: 16px; margin-bottom: 18px;
+    font-size: 15.5px; color: var(--ink); max-width: 82ch; margin-bottom: 0;
+    border-left: 3px solid var(--orange); padding-left: 15px;
   }
-  .rule p { font-size: 16px; color: var(--ink); max-width: 74ch; margin-bottom: 14px; }
-  .rule p strong { color: var(--navy); }
   .rule .rule-badge {
-    display: inline-block; font-size: 12.5px; font-weight: 800; letter-spacing: .06em;
+    display: inline-block; font-size: 11.5px; font-weight: 800; letter-spacing: .06em;
     text-transform: uppercase; color: var(--navy); background: #FFF3E6;
-    border: 1px solid #F3D9BC; border-radius: 999px; padding: 5px 12px; margin-bottom: 16px;
-    cursor: help;
-  }
-  .rule .rule-ev {
-    background: var(--wash); border: 1px solid var(--line); border-radius: 12px;
-    padding: 16px 18px; font-size: 15px; color: var(--muted); margin-top: 18px; margin-bottom: 0;
-  }
-  .rule .rule-ev b {
-    display: block; font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
-    color: var(--teal-dark); margin-bottom: 5px;
+    border: 1px solid #F3D9BC; border-radius: 999px; padding: 4px 11px;
+    margin-top: 12px; margin-bottom: 0; cursor: help;
   }
 
   /* Close */
@@ -280,43 +260,13 @@
       <p class="crumb"><a href="index.html">Home</a> &rsaquo; Playbook</p>
       <span class="eyebrow">The playbook</span>
       <h1 id="pb-h">Twenty-two rules for changing a CRM you can't afford to break — including the one I never shipped.</h1>
-      <p class="lede">This is the long version of how I work — the reasoning under every safety rail on the home page. Twenty-two rules, in the order I actually apply them: diagnose before touching, govern every write, use a model only where it earns its place, report the truth over the flattering number, and switch it all off cleanly when the work ends. Each rule names a failure I've watched happen, the fix, and the honest limit of that fix. Most have shipped; a couple are partial; one I only ever designed — and I mark which is which, because the label is the point.</p>
+      <p class="lede">Twenty-two rules, in the order I actually apply them: diagnose before touching anything, govern every write, use a model only where it earns its place, report the truth over the flattering number, ship new automation without letting it near your live records, and switch it all off cleanly when the work ends. Each one is labeled with how far it has actually been proven — most have shipped, a couple are partial, and one I only ever designed.</p>
       <p class="pb-dl">
         <a class="btn btn-ghost" href="downloads/crm-automation-playbook.pdf">Save the 22 rules as a PDF &darr;</a>
-        <span class="pb-dl-note">No form, no email &mdash; the rules only. The reasoning behind each one stays on this page.</span>
+        <span class="pb-dl-note">No form, no email &mdash; the same list, five pages, made to print.</span>
       </p>
     </div>
   </section>
-
-  <nav class="toc" aria-labelledby="toc-h">
-    <div class="wrap">
-      <h2 id="toc-h">All 22 rules</h2>
-      <ol>
-        <li><span class="n">01</span><a href="#start-read-only-with-a-portal-audit">Diagnose before you build</a></li>
-        <li><span class="n">02</span><a href="#surface-coverage-gaps-as-a-deliverable">Surface the coverage gaps</a></li>
-        <li><span class="n">03</span><a href="#review-workflows-for-archive-candidates">Inventory workflows before building</a></li>
-        <li><span class="n">04</span><a href="#baseline-before-you-build-scoring">Baseline before you score</a></li>
-        <li><span class="n">05</span><a href="#writes-are-opt-in">Make every write opt-in</a></li>
-        <li><span class="n">06</span><a href="#blank-only-writes">Fill blanks, never overwrite</a></li>
-        <li><span class="n">07</span><a href="#stamp-the-writing-source">Stamp every write's source</a></li>
-        <li><span class="n">08</span><a href="#first-writer-wins-source-gate">Let the first writer win</a></li>
-        <li><span class="n">09</span><a href="#operationalize-the-clients-own-model">Operationalize their own model</a></li>
-        <li><span class="n">10</span><a href="#deterministic-collect-model-judges-batch-api">Reserve the model for judgment</a></li>
-        <li><span class="n">11</span><a href="#confidence-gate-write-high-route-rest-to-human">Gate AI on confidence</a></li>
-        <li><span class="n">12</span><a href="#mine-keyword-rules-from-model-output">Mine rules from the model</a></li>
-        <li><span class="n">13</span><a href="#never-re-pay-for-a-settled-record">Never re-pay for settled records</a></li>
-        <li><span class="n">14</span><a href="#gate-stages-on-completed-actions">Gate stages on completed actions</a></li>
-        <li><span class="n">15</span><a href="#define-metric-before-report">Define the metric before building the report</a></li>
-        <li><span class="n">16</span><a href="#convert-notes-to-countable-activity">Make notes countable</a></li>
-        <li><span class="n">17</span><a href="#recover-blank-fields-from-timelines">Derive the blank field</a></li>
-        <li><span class="n">18</span><a href="#snapshot-scores-no-history">Snapshot what it won't keep</a></li>
-        <li><span class="n">19</span><a href="#canary-guarded-rollout">Rehearse in production</a></li>
-        <li><span class="n">20</span><a href="#trip-wire-backstop">Design for the trigger's blind spot</a></li>
-        <li><span class="n">21</span><a href="#monitor-your-own-jobs">Monitor the jobs you ship</a></li>
-        <li><span class="n">22</span><a href="#clean-decommission">Leave nothing running</a></li>
-      </ol>
-    </div>
-  </nav>
 
   <div class="wrap">
       <section class="stage reveal" aria-labelledby="stage-diagnose">
@@ -325,29 +275,21 @@
           <span class="rule-n" aria-hidden="true">01</span>
           <h3><a href="#start-read-only-with-a-portal-audit">Diagnose before you build</a></h3>
           <p class="rule-stmt">The first deliverable is a fixed-scope, read-only audit of data hygiene, pipeline, coverage, and workflow cruft — and its findings, not assumptions or a preset roadmap, decide what gets built and in what order.</p>
-          <p>A portal you haven't read is a portal you can't responsibly change. The common failure is arriving with the roadmap already written — dedup here, lead scoring there, three new workflows — and building against assumptions about what is actually broken. The assumptions are usually stale, the priorities usually wrong, and the first thing you touch is rarely the thing that mattered most.</p><p>The rule is plain: the first deliverable is a fixed-scope, read-only audit, and it never writes. It diagnoses the portal as it stands — data hygiene, pipeline structure, renewals coverage, and workflow cruft — and returns a prioritized fix list. Those findings, not a preset plan, decide what gets built and in what order. Diagnosis first, build second.</p><p>For a construction-tech SaaS client, the engagement opened with a four-report audit covering exactly those areas. It found that most logged meetings and nearly all logged calls had empty bodies, and that contact ownership was near-zero — records nobody was accountable for. Those findings set the build order before a single property was touched. The honest limit: an audit tells you what is broken and how widely, not what it is costing you. It points the work — it doesn't promise the return.</p>
-          <p class="rule-ev"><b>In practice</b> For a construction-tech SaaS client, the work opened with a read-only, four-report audit (data hygiene, pipeline, renewals coverage, workflow cruft) that found most logged meetings and nearly all logged calls had empty bodies, plus near-zero contact ownership — and those findings set the build order before anything was touched.</p>
         </article>
         <article class="rule" id="surface-coverage-gaps-as-a-deliverable">
           <span class="rule-n" aria-hidden="true">02</span>
           <h3><a href="#surface-coverage-gaps-as-a-deliverable">Surface the coverage gaps</a></h3>
           <p class="rule-stmt">A structural absence — a customer with no renewal deal, a record with no owner — is a finding to detect and hand back by name, not a defect the client should have to notice on their own.</p>
-          <p>An absent record raises no error. A customer who should sit on a renewal deal but doesn't isn't a red row in a report — it's an empty space where a row should be. Most audits scan the records that exist and grade their fields; they never flag the record that was never created. So the gap sits quiet until the renewal lapses or the unowned account goes cold, and by then it reads as a surprise rather than a finding.</p><p>So I check for structural presence, not just field quality. For each population that should have a matching record — every active customer paired with a renewal deal, every contact assigned an owner — I count who has one and who doesn't, then <strong>hand the shortfall back as its own named line in the audit</strong>. A coverage gap becomes something you are told, in plain language, not something you trip over later.</p><p>For a construction-tech SaaS client, one audit line reported that of dozens of active customers, more than half had no renewal deal in the pipeline; a separate report surfaced near-zero owner coverage on contacts. The audit names the gap and its size — it does not decide which missing records ought to exist. That call is yours; I hand back the finding, not a verdict on it.</p>
-          <p class="rule-ev"><b>In practice</b> For a construction-tech SaaS client, one audit line handed back a coverage gap as its own explicit finding — of dozens of active customers, more than half had no renewal deal in the pipeline — while a separate report surfaced near-zero owner coverage on contacts.</p>
         </article>
         <article class="rule" id="review-workflows-for-archive-candidates">
           <span class="rule-n" aria-hidden="true">03</span>
           <h3><a href="#review-workflows-for-archive-candidates">Inventory workflows before building</a></h3>
           <p class="rule-stmt">Before you stack new automation on a portal, inventory every workflow it already runs and flag the archive candidates and the silently-inactive ones — you can't build cleanly on a layer nobody has read.</p>
-          <p>The portal was set up years ago, and it has been running automation ever since. Nobody wrote it all down. Some of those workflows still earn their place; some fire on records that no longer exist; and a few were switched off one afternoon and never turned back on — nobody remembers why. Stack new automation on that layer and you inherit every ambiguity in it, silently.</p><p>Before building anything, inventory every workflow the portal already runs and read each one. <strong>The fix:</strong> flag the archive candidates — the dead weight — separately from the ones that are quietly inactive and might be off for a reason worth recovering. At this stage you delete nothing; you produce the map that makes the next build a decision instead of a guess. It runs read-only, so nothing changes while you look.</p><p>On a read-only audit for a construction-tech SaaS client, this pass inventoried roughly fifteen existing workflows and surfaced several archive candidates plus a handful more that were silently inactive and worth investigating — before any new automation was built on top. The inventory flags; it does not decide. Which ones actually get archived, and why each inactive one is off, stays a call you make with the receipts in front of you.</p>
-          <p class="rule-ev"><b>In practice</b> In a read-only audit for a construction-tech SaaS client, I inventoried roughly fifteen existing workflows and flagged several archive candidates plus a handful more silently inactive and worth investigating — before any new automation was built on top.</p>
         </article>
         <article class="rule" id="baseline-before-you-build-scoring">
           <span class="rule-n" aria-hidden="true">04</span>
           <h3><a href="#baseline-before-you-build-scoring">Baseline before you score</a></h3>
           <p class="rule-stmt">Before you build any scoring model, pull the current state of your existing deals and their associations read-only, so the model is designed against what the data actually shows — not against a guess.</p>
-          <p>Most scoring models are built against a hunch about what a good deal looks like — the founder's intuition, a rep's gut feel — and the model quietly encodes that guess as fact. When it then scores something wrong, nobody can tell whether the model is broken or the assumption underneath it was. You have shipped a black box on top of an untested belief.</p><p><strong>The fix:</strong> before building any score, I pull your existing deals and their associations — the companies and contacts attached to them — <strong>read-only</strong>, and lay out the current state first. No writes, no new properties, no model yet. Just the honest picture of what has actually closed, so the score gets designed against the data instead of a guess about it.</p><p>For an industrial-compliance SaaS client, that meant pulling roughly three hundred deals plus their associated companies and contacts into a read-only conversion board — mapping which deal patterns correlated with closing before any scoring sat on top. The limit is worth naming: a baseline tells you what correlated, not what caused it, and a correlation in your own history is a starting hypothesis, not a finished model. The scoring it informs is a separate build. The baseline is the part that ships first — and it earns its keep whether or not the score ever does.</p>
-          <p class="rule-ev"><b>In practice</b> For an industrial-compliance SaaS client, I pulled roughly three hundred deals plus their associated companies and contacts into a read-only conversion board — mapping which deal patterns correlated with closing — before any scoring was built on top of it.</p>
         </article>
       </section>
       <section class="stage reveal" aria-labelledby="stage-govern-every-write">
@@ -356,37 +298,27 @@
           <span class="rule-n" aria-hidden="true">05</span>
           <h3><a href="#writes-are-opt-in">Make every write opt-in</a></h3>
           <p class="rule-stmt">Every script that can change your CRM defaults to report-only — a write happens only when an operator deliberately opts that run in.</p>
-          <p>A write script that changes records by default is one forgotten flag away from a mistake. Run it in the wrong mode, or skip the check because you were sure of the state, and it rewrites your data before you have seen what it intended to do. The failure is a quiet one — nothing warns you, because the job did exactly what its default told it to.</p><p>The rule: every script that can touch the CRM defaults to report-only. It prints exactly what it would change and writes nothing. A real write happens only when that run deliberately opts in — one explicit switch, set per run, never the resting state. Forgetting the switch fails safe to doing nothing, not to overwriting records. The safe behavior is the one you get for free.</p><p>For an industrial-compliance SaaS client, both the role-enrichment job and the weekly account-scoring job follow this — each defaults to report-only, and each writes only when the scheduled run explicitly opts in. The limit is worth stating plainly: opt-in guards against the accidental write, not the wrong one. A deliberate write can still be a mistake — which is why the preview it prints first is the part meant to be read.</p>
-          <p class="rule-ev"><b>In practice</b> For an industrial-compliance SaaS client, both the role-enrichment job and the weekly account-scoring job default to report-only — each writes to the CRM only when the scheduled run explicitly opts in.</p>
         </article>
         <article class="rule" id="blank-only-writes">
           <span class="rule-n" aria-hidden="true">06</span>
           <h3><a href="#blank-only-writes">Fill blanks, never overwrite</a></h3>
           <p class="rule-stmt">An automated job writes to a CRM field only when it is empty, so a value a person entered by hand is never silently overwritten.</p>
-          <p>An enrichment job that runs on a schedule can quietly undo an afternoon of careful hand-entry. Someone corrects a batch of records by hand; the next backfill sweeps through and replaces their work with a machine guess. Once that happens even once, the person stops trusting the field — and a field nobody trusts is a field nobody maintains.</p><p>The rule is deliberately narrow: a job writes to a property <strong>only when it is blank</strong>. In practice that means the job never loads the full table. It queries only the records missing the field, so a value that is already present is never even a candidate to be written. A confidence gate sits behind that — where the model is unsure, the field stays empty and the record goes to a person, rather than getting filled with a low-confidence label.</p><p>For an industrial-compliance SaaS client, a role-labeling job read only unlabeled contacts, processed over 20,000 titled contacts, and wrote roughly 15,000 labels into blank fields behind a 0.70 confidence gate — holding several thousand for human review. The honest limit: this protects hand-entered values, not correct ones. A field someone filled in wrongly stays wrong until a human fixes it — the job will not touch what a person already claimed.</p>
-          <p class="rule-ev"><b>In practice</b> For an industrial-compliance SaaS client, a role-labeling job queried only the contacts still missing the field — never one already filled — processed over 20,000 titled contacts, and wrote roughly 15,000 labels into blank fields only, holding several thousand for human review behind a fixed confidence gate rather than overwriting or guessing.</p>
         </article>
         <article class="rule" id="stamp-the-writing-source">
           <span class="rule-n" aria-hidden="true">07</span>
           <h3><a href="#stamp-the-writing-source">Stamp every write's source</a></h3>
           <p class="rule-stmt">Every automated write records which system produced it — a companion source field carrying a marker like model-and-date or the workflow that fired — so any value's origin is auditable and the rule about who may overwrite has something to read.</p>
-          <p>Two systems write the same field — a native keyword workflow and an AI enrichment job. Later a value looks wrong, and you have no way to tell which one set it. That gap makes correction dangerous: overwrite blindly and you may clobber the more authoritative writer, or the person who fixed the record by hand. You can't decide who may overwrite a value until you can see who wrote it.</p><p>The rule: every automated write records which system produced it. Each write leaves a companion source property beside the value — a short marker naming the path that set it, <code>workflow-keyword</code> from the native side, or the AI job's own stamp. The convention for AI writes is a source string of the form <code>claude:model@date</code>, so a value traces back not just to a system but to the exact run and model version behind it.</p><p>For an industrial-compliance SaaS client, one buying-role field can be written either way, and every write carries this marker — a value the workflow set stays distinguishable from one the AI set. The honest limit: the stamp decides nothing on its own. It gives the first-writer gate, and any person auditing later, something to read. It tells you where a value came from — never whether it's right.</p>
-          <p class="rule-ev"><b>In practice</b> For an industrial-compliance SaaS client, one buying-role field can be written two ways — by a native keyword workflow or by an AI enrichment job — so every write stamps a companion source marker naming which path set it. A value the workflow wrote is always distinguishable from one the AI wrote, and either traces back to its exact run — which is what lets a first-writer gate decide safely whether to leave a value alone.</p>
         </article>
         <article class="rule" id="first-writer-wins-source-gate">
           <span class="rule-n" aria-hidden="true">08</span>
           <h3><a href="#first-writer-wins-source-gate">Let the first writer win</a></h3>
           <p class="rule-stmt">When a native workflow and an API job can both write the same field, each enrolls only while a companion source flag is still unset and stamps that flag on write — so the fast path and the slow path never overwrite each other.</p>
-          <p>Two systems that can both write the same field will eventually fight over it. A native workflow fires the instant a record lands; an API job runs on its own schedule. Point both at one property and the slower path overwrites the faster one — or the reverse — depending only on who ran last. The value flickers between answers, and neither writer knows the other exists.</p><p><strong>The fix:</strong> give the field a companion <code>source</code> flag. Each writer enrolls only while that flag is still unset, and stamps it on write. The native path claims the field the moment it can match, records where the value came from, and the flag closes the door behind it. The API job takes only what remains unlabeled. First write wins — no lock, no coordination, no clobber.</p><p>For an industrial-compliance SaaS client, this splits a contact's buying-committee role across the two paths cleanly: keyword rules label in real time, AI enrichment picks up everything the keywords can't. The rules were mined from roughly 15,000 existing AI labels and kept only where they held 85%+ purity — the honest limit is that a keyword path is a fallback, sharp where the language is unambiguous and silent where it isn't. Everything else still waits for the model.</p>
-          <p class="rule-ev"><b>In practice</b> For an industrial-compliance SaaS client, a native keyword workflow labels a contact's buying-committee role the instant it can while an AI enrichment job takes everything still unlabeled — both gated on the same source flag so the two never overwrite each other, with the keyword rules mined from roughly 15,000 AI labels and kept only where they held 85%+ purity.</p>
         </article>
         <article class="rule" id="operationalize-the-clients-own-model">
           <span class="rule-n" aria-hidden="true">09</span>
           <h3><a href="#operationalize-the-clients-own-model">Operationalize their own model</a></h3>
           <p class="rule-stmt">When a client already trusts a strategy model it authored itself — a territory map, a state-level scoring spreadsheet — operationalize that model into CRM properties and backfill it across the whole base in one governed, dry-run-first pass, rather than importing a scoring vendor's opinion the client never wrote.</p>
           <p class="rule-badge" title="This rule holds, but not everything it describes is running. The limit is stated in the rule.">Shipped in part</p>
-          <p>A client that has already built its own go-to-market model — a territory map, a state-level scoring spreadsheet it authored and trusts — does not need a scoring vendor's opinion written on top of it. Buy one anyway and the CRM starts running on a number nobody at the company wrote, while the strategy the team actually believes in stays trapped in a spreadsheet.</p><p>The fix is to operationalize the model they already own. I turn those artifacts into CRM properties and backfill the properties across the whole base in a single governed pass — writes off by default, a dry run first, so the batch is inspected before anything lands. The CRM ends up running on the client's strategy rather than a black box.</p><p>For a construction-tech SaaS client, an eight-input, state-level scoring spreadsheet and a territory plan — both the client's own work — became CRM properties backfilled across roughly 10,000 records: a heat-index score and market tier onto roughly 2,600 companies, big-state subregions onto roughly 600, and owner coverage lifted from near-zero to about a quarter of the database. Two honest limits. This was a one-time backfill, not a self-maintaining rule — owner assignment on newly created records still lives in a workflow set built disabled, awaiting the client's sign-off. And the tier cut points that map the score to Core, Expansion, and Emerging were still the client's working thresholds, pending its confirmation.</p>
-          <p class="rule-ev"><b>In practice</b> For a construction-tech SaaS client, the client's own eight-input, state-level scoring spreadsheet and territory plan were turned into CRM properties and backfilled across roughly 10,000 records in one governed pass — writing a heat-index score and market tier onto roughly 2,600 companies, big-state subregions onto roughly 600 records, and lifting owner coverage from near-zero to about a quarter of the database — with the tier cut points still the client's working thresholds, pending its confirmation.</p>
         </article>
       </section>
       <section class="stage reveal" aria-labelledby="stage-use-a-model-sparingly">
@@ -395,30 +327,22 @@
           <span class="rule-n" aria-hidden="true">10</span>
           <h3><a href="#deterministic-collect-model-judges-batch-api">Reserve the model for judgment</a></h3>
           <p class="rule-stmt">Let code do the reading, parsing, and writing; call the model only for the single judgment it alone can make — and run that call through a batch API at roughly half the cost of live requests.</p>
-          <p>Point a language model at an entire data job and you pay for its weakest trait. Reading records, parsing fields, writing results back — these are mechanical steps, and a few lines of code do them more reliably than a model, at a fraction of the cost and none of the guesswork. A model asked to also fetch and write will, sooner or later, invent a value on a step that never called for judgment in the first place.</p><p>The rule is a division of labor. Let code do the collecting, parsing, and writing — deterministic on both ends, so every read and every write is auditable and repeatable. Call the model for <strong>the one inference it alone can make</strong>, and run even that through a batch API instead of live requests — asynchronous, and roughly half the cost of synchronous calls.</p><p>For an industrial-compliance SaaS client, code read every unlabeled contact and batch-wrote every result; the model did a single thing — map a job title to a buying-committee role. That classified tens of thousands of contacts within 48 hours for about $20 of API cost, no enrichment vendor involved. The honest limit: a title is only a proxy, so a confidence gate wrote the clear cases and routed the rest to human review rather than polluting the CRM.</p>
-          <p class="rule-ev"><b>In practice</b> For an industrial-compliance SaaS client, code handled every read and write while the model did only the one inference — mapping a job title to a buying-committee role — classifying tens of thousands of contacts within 48 hours for about $20 of API cost, roughly half the cost of live calls.</p>
         </article>
         <article class="rule" id="confidence-gate-write-high-route-rest-to-human">
           <span class="rule-n" aria-hidden="true">11</span>
           <h3><a href="#confidence-gate-write-high-route-rest-to-human">Gate AI on confidence</a></h3>
           <p class="rule-stmt">When a model enriches your records, write only the labels it's confident about and route everything below the threshold to a human review queue — a blank field is recoverable, a wrong one silently corrupts every report built on it.</p>
-          <p>A model asked to enrich a record will always return something, even when it is guessing. That is the trap. A missing field you can see and fix — a confident, wrong one you can't, because it looks exactly like a right one. It flows straight into your segments, your routing rules, and every report built on top of them, corrupting the numbers quietly. The wrong label is worse than no label at all.</p><p>So I gate every write on the model's own confidence. Each enriched record carries a score; only labels at or above a fixed threshold are written back — everything below diverts to a human review queue instead of the CRM. The whole job defaults to a dry run, so nothing lands without an explicit flag.</p><p>For an industrial-compliance SaaS client, one enrichment pass classified job titles into a buying-committee role taxonomy across tens of thousands of contacts. Roughly two-thirds cleared the gate and were auto-labeled; the several thousand the model wasn't sure about were held back for a person to review, not written. The honest limit: the gate doesn't make the model smarter — <strong>it just refuses to let your CRM inherit its guesses.</strong></p>
-          <p class="rule-ev"><b>In practice</b> For an industrial-compliance SaaS client, an AI job classified tens of thousands of contacts into buying-committee roles behind a fixed confidence gate — roughly two-thirds were auto-labeled and the several thousand the model wasn't sure about were held for human review instead of written to the CRM.</p>
         </article>
         <article class="rule" id="mine-keyword-rules-from-model-output">
           <span class="rule-n" aria-hidden="true">12</span>
           <h3><a href="#mine-keyword-rules-from-model-output">Mine rules from the model</a></h3>
           <p class="rule-stmt">Once a model has labeled your data, mine its output into deterministic rules — so cheap code handles the high-volume easy cases in real time and you pay the model only for the tail it alone can resolve.</p>
-          <p>A classifier that has to score every record forever is the expensive way to do a cheap job. Most of the volume is easy — a handful of title keywords settle the call — yet you keep paying the model to re-decide the obvious, and every new contact waits on the next batch run before it gets labeled at all.</p><p>Once a model has labeled your base, that output is training data for something cheaper. <strong>The fix:</strong> mine the labels into deterministic keyword rules and promote the reliable ones into a native workflow that stamps the answer at enrollment — free, and in real time. Two tiers, first-writer-wins: a matching title gets its role instantly; anything the rules can't call is left blank for the periodic model run. Cheap code takes the head, and the model is paid only for the tail.</p><p>For an industrial-compliance SaaS client, I mined the model's labels across the existing base into keyword rules, keeping only those that mapped a title keyword to a single role in a six-role buying-committee taxonomy with high purity on a meaningful sample. Those went live in a native workflow. The honest limit: keywords read the title, not the person — anything ambiguous stays with the model, by design.</p>
-          <p class="rule-ev"><b>In practice</b> For an industrial-compliance SaaS client, I mined the model's labels across the existing base into keyword rules — keeping only those that mapped a title keyword to a single buying-committee role with high purity on a meaningful sample — and promoted them into a live native workflow that stamps a role on matching new contacts for free at enrollment, leaving the rest for the model.</p>
         </article>
         <article class="rule" id="never-re-pay-for-a-settled-record">
           <span class="rule-n" aria-hidden="true">13</span>
           <h3><a href="#never-re-pay-for-a-settled-record">Never re-pay for settled records</a></h3>
           <p class="rule-stmt">Read only the records that still need a decision and write each one once, so a re-run re-pays the model nothing for work already done.</p>
           <p class="rule-badge" title="This rule holds, but not everything it describes is running. The limit is stated in the rule.">Shipped in part</p>
-          <p>A scheduled enrichment job is easy to write as a full sweep: every run re-reads the whole table and re-asks the model about contacts it already labeled last week. The cost scales with the size of the CRM, not with the new work — and you pay a second time for records that never changed.</p><p><strong>The fix:</strong> read only the records that still need a decision, and write each one once. The job queries for contacts still missing a label — a blank-only read — instead of pulling the full set. The keyword pass and the model pass stay first-writer-wins through a source stamp, so neither overwrites a record the other already settled. Run it again next week and it re-reads nothing it already decided. Idempotent by design, not by luck.</p><p>For an industrial-compliance SaaS client, the enrichment job works exactly this way — a re-run skips every contact already labeled and gives the model nothing to redo. The honest limit: the savings come from the incremental read, not from any clever cache. Nothing exotic holds the cost down — the job simply never asks twice about a record it has already settled.</p>
-          <p class="rule-ev"><b>In practice</b> For an industrial-compliance SaaS client, the enrichment job reads only the contacts that still need a label and writes each one once — so a re-run skips every record already decided and gives the model nothing to redo.</p>
         </article>
       </section>
       <section class="stage reveal" aria-labelledby="stage-report-the-truth">
@@ -428,36 +352,26 @@
           <h3><a href="#gate-stages-on-completed-actions">Gate stages on completed actions</a></h3>
           <p class="rule-stmt">A pipeline stage should be defined by something that verifiably happened — a meeting held, a proposal sent — not by rep intent like "proposal coming" or "verbal yes," because a stage that describes hope turns every forecast into a guess.</p>
           <p class="rule-badge" title="This rule holds, but not everything it describes is running. The limit is stated in the rule.">Shipped in part</p>
-          <p>When stages are named for what a rep intends to do next — <code>proposal coming</code>, <code>verbal yes</code>, <code>about to close</code> — the pipeline stops describing reality and starts describing hope. Two reps read the same stage differently, deals sit in <code>proposal coming</code> for a month with no proposal, and the forecast you present to the board is really a poll of how optimistic the team feels this week. You cannot manage what a stage does not honestly measure.</p><p>The fix is to gate every stage on an action that verifiably happened. A deal advances because a meeting was held, a proposal was sent, terms were returned — an event with a date and an artifact behind it, not a feeling. Written that way, the board becomes a record of what occurred, forecast math rests on facts, and the definition of &quot;qualified&quot; stops drifting from rep to rep.</p><p>For a fire-protection contractor running 700+ deals across three pipelines, I rebuilt the business-development pipeline on this principle and stood up tracking for a new referral channel — a source tag, a first-engagement date, meeting-outcome properties, and a native funnel dashboard. The honest limit: that referral tracking is plumbing that is built and live but still near-empty, awaiting real throughput rather than a proven, populated funnel — and there is no ROI or time-saved figure here, only a cleaner structure.</p>
-          <p class="rule-ev"><b>In practice</b> For a fire-protection contractor running 700+ deals across three pipelines, I rebuilt the business-development pipeline so its stages are gated on completed actions rather than rep intent, and stood up the tracking for a new referral channel — a source tag, a first-engagement date, meeting-outcome properties, and a native funnel dashboard.</p>
         </article>
         <article class="rule" id="define-metric-before-report">
           <span class="rule-n" aria-hidden="true">15</span>
           <h3><a href="#define-metric-before-report">Define the metric before building the report</a></h3>
           <p class="rule-stmt">Before building any report, agree the exact operational definition of each metric — what counts as held, as a demo, as a win, and which pipeline is excluded — because the intuitive definition usually undercounts real work.</p>
-          <p>A report is only as honest as its definitions. The intuitive definition of a metric — a meeting is <em>held</em> when someone marks it completed, a deal is a <em>demo</em> when a demo-date field is filled — almost always undercounts the real work. Build the dashboard on those definitions and the totals look wrong to everyone who did the work, so nobody trusts the report.</p><p><strong>The fix:</strong> before any report gets built, agree the exact operational definition of every metric — what counts as held, as a demo, as a win, and which pipeline is left out entirely. I write those rules against the data as it actually behaves, not as the fields imply. A meeting counts as held when its start time is in the past and its outcome is not canceled or a no-show. A demo is inferred from meetings associated to the deal. A win is a closed deal at full stage probability. Only sales reps are measured, and one pipeline is excluded from the active forecast.</p><p>For a construction-tech SaaS client, those definitions sit under a live monthly executive sales workbook. The held-meeting rule surfaced a roughly five-fold (~5x) undercount versus the obvious "completed" test. The demo rule exists because the dedicated demo-date field was populated on only a handful of deals — too few to report on. The honest limit: a demo inferred from an associated meeting is a strong signal, not a logged fact — a documented convention, and it holds only as long as reps keep booking meetings on the deal.</p>
-          <p class="rule-ev"><b>In practice</b> For a construction-tech SaaS client, I built a live monthly executive sales workbook on explicit data-reality definitions rather than the obvious ones — a meeting counts as held when its start is in the past and not canceled or a no-show, a rule that surfaced a roughly five-fold (~5x) undercount versus the intuitive "completed" test; a demo is inferred from meetings on the deal instead of a demo-date field populated on only a handful of deals; and a win is a closed deal at full stage probability.</p>
         </article>
         <article class="rule" id="convert-notes-to-countable-activity">
           <span class="rule-n" aria-hidden="true">16</span>
           <h3><a href="#convert-notes-to-countable-activity">Make notes countable</a></h3>
           <p class="rule-stmt">Real activity typed into free-text notes stays invisible to your dashboards — convert those notes into structured call and meeting engagements so the work is credited without changing how reps work.</p>
-          <p>A rep makes the call. A rep drives to the site. Then the rep types what happened into a note, because a note is the fastest place to put it. Your activity dashboards count typed engagements — logged calls, logged meetings — not prose. So the work is done and the work is invisible. You can't coach against it, and you can't forecast on it, because as far as the reporting is concerned it never happened.</p><p><strong>The fix:</strong> convert the notes into the engagements they describe. A scheduled converter reads past-tense note bodies, classifies each into the correct call or meeting type, files it as a completed engagement carrying the note's own associations, stamps an idempotency key so a re-run never double-counts, then archives the original. Reps keep working exactly as they already do.</p><p>For a construction-tech SaaS client, this runs on a scheduled job today. For a fire-protection contractor, an earlier twice-daily conversion turned stop-in notes into completed calls with the right disposition, running cleanly until the engagement wrapped. The honest limit: it only credits what someone actually wrote down. It makes existing notes countable — it does not invent activity that was never logged.</p>
-          <p class="rule-ev"><b>In practice</b> For a construction-tech SaaS client, a scheduled converter classifies past-tense note bodies into typed meeting engagements, carries over each note's associations, stamps an idempotency key, and archives the original; for a fire-protection contractor, an earlier twice-daily converter turned stop-in notes into completed call engagements with the right disposition, running cleanly until the engagement wrapped.</p>
         </article>
         <article class="rule" id="recover-blank-fields-from-timelines">
           <span class="rule-n" aria-hidden="true">17</span>
           <h3><a href="#recover-blank-fields-from-timelines">Derive the blank field</a></h3>
           <p class="rule-stmt">A blank field is missing input, not missing information — when a value was never recorded, derive it from the record's own activity history rather than accepting the blank.</p>
-          <p>Every closed-lost deal showed the same thing: a blank loss-reason field. So the pipeline post-mortem treated <em>blank</em> as <em>unknown</em> — nobody had typed a reason at close, and the review had nothing to say about why deals were dying. The record looked empty. It wasn't.</p><p>A blank field is missing input, not missing information. When a value was never recorded, derive it from the record's own activity history rather than accepting the blank. <strong>The fix:</strong> a script pulls each lost deal's timeline of calls, meetings, and notes, then derives a reason category from the deal's last substantive activity — surfacing the pattern the CRM never captured. The output feeds a <code>Why Deals Are Lost</code> tab in the conversion-board workbook, where the categories can be counted and ranked.</p><p>For an industrial-compliance SaaS client whose loss-reason field was blank on every one of over 40 closed-lost deals, I derived a reason for over 90% of them — top causes: not interested, stalled after the demo, and organizational change. The limit is honest: email-body access wasn't granted, so derivation used calls, meetings, and notes only, and the few deals with no logged activity stayed blank rather than being guessed.</p>
-          <p class="rule-ev"><b>In practice</b> For an industrial-compliance SaaS client whose loss-reason field was blank on every one of over 40 closed-lost deals, I recovered a likely reason for the roughly nine in ten that had any call, meeting, or note to read — each derived from the deal's last substantive activity rather than confirmed at close — and rank-ordered them into a short list of hypotheses to validate with the reps, led by not interested, stalled after the demo, and organizational change.</p>
         </article>
         <article class="rule" id="snapshot-scores-no-history">
           <span class="rule-n" aria-hidden="true">18</span>
           <h3><a href="#snapshot-scores-no-history">Snapshot what it won't keep</a></h3>
           <p class="rule-stmt">If the platform keeps no history of a score, snapshot it on a schedule yourself — trend and movement over time only exist if you record them.</p>
-          <p>Your CRM recalculates a score and writes the new number straight over the old one. It keeps no history. You can read today's value for any account, but not last month's — so you can't tell which accounts are climbing toward a buying window and which are quietly slipping. The movement, the thing that actually signals intent, is gone the moment it's overwritten.</p><p><strong>The fix:</strong> snapshot the score on a schedule into a history file you own. A weekly job reads the current value for every record, appends one row per ISO week, and commits the result back — so a number the platform forgets becomes a series you can chart. Rendered as a trend dashboard, movement over time turns into something you can actually see.</p><p>For a construction-tech SaaS client, a weekly job snapshots the native lead score across thousands of companies (roughly 3,000) into a history HubSpot itself doesn't keep, delivered as a trend dashboard. For an industrial-compliance SaaS client, a fit-based A–D account score on over 10,000 companies is re-snapshotted every week so movement stays visible. The honest limit: the trend only exists from the week you start recording — earlier movement can't be recovered, so the sooner the snapshot begins, the sooner it's worth reading.</p>
-          <p class="rule-ev"><b>In practice</b> For a construction-tech SaaS client, a weekly job snapshots the native lead score across thousands of companies (roughly 3,000) into a history HubSpot itself doesn't keep and renders it as a trend dashboard; for an industrial-compliance SaaS client, a fit-based A–D account score on over 10,000 companies is re-snapshotted every week so movement stays visible.</p>
         </article>
       </section>
       <section class="stage reveal" aria-labelledby="stage-ship-without-breaking-it">
@@ -467,23 +381,17 @@
           <h3><a href="#canary-guarded-rollout">Rehearse in production</a></h3>
           <p class="rule-stmt">Build new automation disabled, rehearse it end-to-end in your live portal behind an enrollment guard proven to keep every real record out, and leave it off until you sign off.</p>
           <p class="rule-badge" title="This rule holds, but not everything it describes is running. The limit is stated in the rule.">Shipped in part</p>
-          <p>A new workflow's first run shouldn't be the moment it meets your live records. If the first real test happens in production, a bad branch enrolls deals that should have been left alone, stamps the wrong property, or fires a notification at a real customer — and the CRM is where that damage lands and stays.</p><p>So I build new automation disabled and rehearse it end-to-end in your own live portal, behind an enrollment guard proven to hold every real record out. Every branch runs against a single guarded test record; notifications are redirected to one internal recipient; delays are shrunk so the whole ladder can be exercised in minutes. Then it all reverts, and the workflows stay off until you sign off — <strong>validated, not enabled</strong>.</p><p>For a construction-tech SaaS client, I built 9 workflows disabled — a closed-won activation system reading 14 custom properties on a 24h/48h/72h escalation ladder. I live-validated the set end-to-end in the live portal, where the enrollment guard kept every production closed-won deal (dozens) from enrolling while one guarded test deal exercised the lifecycle flip, owner assignment, escalation rungs, and renewal clone. They remain disabled pending the client's sign-off. One limit held honestly in the notes: the renewal clone isn't yet linked to the company.</p>
-          <p class="rule-ev"><b>In practice</b> For a construction-tech SaaS client, I built 9 workflows disabled — a closed-won activation system reading 14 custom properties, on a 24h/48h/72h escalation ladder — then live-validated the set end-to-end in the live portal, where an enrollment guard kept every production closed-won deal (dozens) from enrolling, and left them disabled pending the client's sign-off.</p>
         </article>
         <article class="rule" id="trip-wire-backstop">
           <span class="rule-n" aria-hidden="true">20</span>
           <h3><a href="#trip-wire-backstop">Design for the trigger's blind spot</a></h3>
           <p class="rule-stmt">When a single event is an automation's only trigger, design a separate trip-wire report for the failure mode where that event never fires.</p>
           <p class="rule-badge" title="Specified in a build plan and never deployed. Included because the reasoning still holds.">Designed, never shipped</p>
-          <p>An automation that fires on a single event has one blind spot: the case where that event never fires. When it doesn't, nothing errors. The record simply stalls — no downstream action, no alert, no trace. It disappears quietly, and you find out when the customer does.</p><p>The rule is plain: when a single event is an automation's only trigger, design a separate trip-wire report to watch for its silence. The report doesn't listen for the event. It watches for the records that should have moved by now and didn't — past a deadline you set. <strong>The fix:</strong> a standing report that surfaces the stalled record instead of waiting on a trigger that never comes.</p><p>For a construction-tech SaaS client whose post-signature automation fires only when a deal is marked closed-won, I specified a signed-but-not-activated report after one business day — a backstop for the exact case where a deal is signed but never marked won, so nothing downstream fires and the customer lands in an empty product. The honest limit: that backstop is a documented design decision, not a shipped system. It lives in the build plan, not the portal — process design, not workflow clicking.</p>
-          <p class="rule-ev"><b>In practice</b> For a construction-tech SaaS client whose post-signature automation fires only on a closed-won deal, I wrote a signed-but-not-activated report after one business day into the build plan — a backstop for the exact case where a deal is signed but never marked closed-won — documented as a design decision, not yet shipped.</p>
         </article>
         <article class="rule" id="monitor-your-own-jobs">
           <span class="rule-n" aria-hidden="true">21</span>
           <h3><a href="#monitor-your-own-jobs">Monitor the jobs you ship</a></h3>
           <p class="rule-stmt">Run a daily health check on your own shipped automations, not just the client's data, so a silent failure surfaces in hours instead of when a report finally goes stale.</p>
-          <p>Most monitoring watches the client's data. The automation that maintains that data goes unwatched — so when a job you shipped quietly stops running, nothing tells you. The gap surfaces weeks later, when someone opens a report and the numbers have gone stale.</p><p>The rule is plain: watch the jobs you ship, not only the data they touch. Each morning a small health monitor I built runs over every scheduled automation I run for a client, checks whether each one actually executed, and emails me a <strong>pass/fail/overdue</strong> report. It runs on its own schedule — one routine, with no dependence on the jobs it watches. A silent no-op, whether a missing credential or a workflow wired to nothing, shows up as a failed line in hours, not when you notice the output has drifted.</p><p>It has already earned its place. Running across a construction-tech SaaS client's CRM automations and an industrial-compliance SaaS client's enrichment job, it flagged one of my own dead workflows — dispatch-only, wired to no schedule, doing nothing — which I then deleted. The honest limit: the monitor's access wasn't scoped to one repo at first, so that repo returned an error instead of a real status — a coverage gap I logged rather than hid. Monitored, not fire-and-forget.</p>
-          <p class="rule-ev"><b>In practice</b> A health monitor I built runs each morning over the scheduled automations I ship — across a construction-tech SaaS client's CRM automations and an industrial-compliance SaaS client's enrichment job — and it has already caught one of my own dead workflows, dispatch-only and wired to no schedule, which I then deleted.</p>
         </article>
       </section>
       <section class="stage reveal" aria-labelledby="stage-retire-cleanly">
@@ -492,8 +400,6 @@
           <span class="rule-n" aria-hidden="true">22</span>
           <h3><a href="#clean-decommission">Leave nothing running</a></h3>
           <p class="rule-stmt">When an engagement ends, deliberately retire every automation you shipped and stop its triggers at the source — an unowned job left running is a liability, not a parting gift.</p>
-          <p>An automation outlives the engagement that created it. A consultant finishes, moves on, and the jobs they built keep firing — writing to your CRM on a schedule nobody remembers, owned by nobody, watched by nobody. Six months later a report is subtly wrong, or a record gets stamped by a process no one can name. That is not a parting gift. It is a liability sitting quietly in your portal.</p><p>The rule is plain: anything I ship, I am also responsible for switching off. When the work ends, every automation I built gets retired, and its trigger stopped at the source. Stopping the trigger is the part that matters — disabling a workflow inside the CRM does nothing if an external scheduler keeps calling it, so the outside cron entries come down too, not just the switch you can see.</p><p>For a fire-protection contractor, the engagement wrapped and I retired every automation I'd shipped — a weekday portal digest, a thrice-weekly sales dashboard, and a note-to-call conversion job — on a single day, each trigger stopped at its source. <strong>Decommissioned, not abandoned.</strong> The honest limit: this covers only what I built. Anything someone else wired stays yours to own — but nothing I leave behind keeps running unwatched.</p>
-          <p class="rule-ev"><b>In practice</b> For a fire-protection contractor, when the engagement concluded I retired every automation I'd shipped — a weekday portal digest, a thrice-weekly sales dashboard, and a note-to-call conversion job — on a single day and stopped each trigger at its source.</p>
         </article>
       </section>
   </div>
@@ -561,9 +467,6 @@
     document.querySelectorAll('a[href*="calendar.app.google"]').forEach(function (a) {
       var loc = a.closest('header.site') ? 'header' : 'playbook-cta';
       a.addEventListener('click', function () { gcEvent('book-audit/' + loc); });
-    });
-    document.querySelectorAll('.toc a').forEach(function (a) {
-      a.addEventListener('click', function () { gcEvent('playbook-toc' + a.getAttribute('href')); });
     });
     document.querySelectorAll('a[href$=".pdf"]').forEach(function (a) {
       a.addEventListener('click', function () { gcEvent('playbook-pdf'); });
