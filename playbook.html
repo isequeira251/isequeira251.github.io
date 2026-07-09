@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>22 Rules for Changing a Live CRM | Ian Sequeira</title>
-<meta name="description" content="Twenty-two rules for changing a live HubSpot portal without breaking it — each labeled with how far it's been proven, including the one I never shipped.">
+<meta name="description" content="Twenty-two rules for changing a live HubSpot portal without breaking it. The names here; each stated in a free PDF, no form. Including the one I never shipped.">
 <meta name="author" content="Ian Sequeira">
 <link rel="canonical" href="https://isequeira251.github.io/playbook.html">
 <meta property="og:title" content="22 Rules for Changing a Live CRM | Ian Sequeira">
-<meta property="og:description" content="Twenty-two rules for changing a live HubSpot portal without breaking it — each labeled with how far it's been proven, including the one I never shipped.">
+<meta property="og:description" content="Twenty-two rules for changing a live HubSpot portal without breaking it. The names here; each stated in a free PDF, no form. Including the one I never shipped.">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="en_US">
 <meta property="og:url" content="https://isequeira251.github.io/playbook.html">
@@ -25,7 +25,7 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Twenty-two rules for changing a CRM you can't afford to break — including the one I never shipped.",
-  "description": "Twenty-two rules for changing a live HubSpot portal without breaking it — each labeled with how far it's been proven, including the one I never shipped.",
+  "description": "Twenty-two rules for changing a live HubSpot portal without breaking it. The names here; each stated in a free PDF, no form. Including the one I never shipped.",
   "author": {
     "@type": "Person",
     "name": "Ian Sequeira",
@@ -183,31 +183,31 @@
     font-size: 13px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase;
     color: var(--teal-dark); padding-bottom: 12px; border-bottom: 2px solid var(--line);
   }
-  .rule { padding: 20px 0; border-bottom: 1px solid var(--line); }
-  .rule:last-child { border-bottom: 0; }
-  .rule-n {
-    display: inline-block; font-size: 11.5px; font-weight: 800; letter-spacing: .08em;
-    color: var(--orange-deep); background: var(--wash-warm); border: 1px solid #F0DFD3;
-    border-radius: 6px; padding: 2px 8px; margin-bottom: 8px; font-variant-numeric: tabular-nums;
+  .rule-grid { list-style: none; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 40px; margin-top: 4px; }
+  @media (max-width: 780px) { .rule-grid { grid-template-columns: 1fr; } }
+  .rule {
+    display: flex; align-items: baseline; gap: 13px;
+    padding: 14px 2px; border-bottom: 1px solid var(--line);
   }
-  .rule h3 { font-size: 19px; margin-bottom: 8px; }
-  .rule h3 a { color: inherit; text-decoration: none; }
-  .rule h3 a:hover { color: var(--orange-dark); }
-  .rule .rule-stmt {
-    font-size: 15.5px; color: var(--ink); max-width: 82ch; margin-bottom: 0;
-    border-left: 3px solid var(--orange); padding-left: 15px;
+  .rule-n {
+    font-size: 12px; font-weight: 800; color: var(--orange-deep);
+    font-variant-numeric: tabular-nums; letter-spacing: .04em; flex: none;
+  }
+  .rule h3 {
+    font-size: 16.5px; font-weight: 600; margin: 0; letter-spacing: -0.005em;
   }
   .rule .rule-badge {
-    display: inline-block; font-size: 11.5px; font-weight: 800; letter-spacing: .06em;
-    text-transform: uppercase; color: var(--navy); background: #FFF3E6;
-    border: 1px solid #F3D9BC; border-radius: 999px; padding: 4px 11px;
-    margin-top: 12px; margin-bottom: 0; cursor: help;
+    display: inline-block; margin-left: 8px; vertical-align: 1px;
+    font-size: 10px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--navy); background: #FFF3E6; border: 1px solid #F3D9BC;
+    border-radius: 999px; padding: 2px 8px; cursor: help; white-space: nowrap;
   }
 
   /* Close */
   .pb-cta { background: var(--wash-warm); border-top: 1px solid var(--line); padding: 64px 0; text-align: center; }
   .pb-cta h2 { font-size: clamp(24px, 3.4vw, 32px); margin-bottom: 14px; }
   .pb-cta p { max-width: 62ch; margin: 0 auto 26px; color: var(--muted); font-size: 16.5px; }
+  .pb-cta .pb-cta-alt { margin: 24px auto 0; font-size: 14.5px; }
 
   footer { border-top: 1px solid var(--line); padding: 26px 0; font-size: 13.5px; color: var(--muted); }
   footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
@@ -260,10 +260,10 @@
       <p class="crumb"><a href="index.html">Home</a> &rsaquo; Playbook</p>
       <span class="eyebrow">The playbook</span>
       <h1 id="pb-h">Twenty-two rules for changing a CRM you can't afford to break — including the one I never shipped.</h1>
-      <p class="lede">Twenty-two rules, in the order I actually apply them: diagnose before touching anything, govern every write, use a model only where it earns its place, report the truth over the flattering number, ship new automation without letting it near your live records, and switch it all off cleanly when the work ends. Each one is labeled with how far it has actually been proven — most have shipped, a couple are partial, and one I only ever designed.</p>
+      <p class="lede">Below are all twenty-two, grouped in the order I apply them — a few marked for how far each one got: shipped in part, or never shipped at all. A name tells you a rule exists, not what it says. The sentence behind each is in the PDF.</p>
       <p class="pb-dl">
-        <a class="btn btn-ghost" href="downloads/crm-automation-playbook.pdf">Save the 22 rules as a PDF &darr;</a>
-        <span class="pb-dl-note">No form, no email &mdash; the same list, five pages, made to print.</span>
+        <a class="btn btn-accent" href="downloads/crm-automation-playbook.pdf">Read what each rule says (PDF)</a>
+        <span class="pb-dl-note">No form, no email — the same names, each with its one plain sentence. Five pages, made to print.</span>
       </p>
     </div>
   </section>
@@ -271,144 +271,64 @@
   <div class="wrap">
       <section class="stage reveal" aria-labelledby="stage-diagnose">
         <h2 class="stage-h" id="stage-diagnose">Diagnose</h2>
-        <article class="rule" id="start-read-only-with-a-portal-audit">
-          <span class="rule-n" aria-hidden="true">01</span>
-          <h3><a href="#start-read-only-with-a-portal-audit">Diagnose before you build</a></h3>
-          <p class="rule-stmt">The first deliverable is a fixed-scope, read-only audit of data hygiene, pipeline, coverage, and workflow cruft — and its findings, not assumptions or a preset roadmap, decide what gets built and in what order.</p>
-        </article>
-        <article class="rule" id="surface-coverage-gaps-as-a-deliverable">
-          <span class="rule-n" aria-hidden="true">02</span>
-          <h3><a href="#surface-coverage-gaps-as-a-deliverable">Surface the coverage gaps</a></h3>
-          <p class="rule-stmt">A structural absence — a customer with no renewal deal, a record with no owner — is a finding to detect and hand back by name, not a defect the client should have to notice on their own.</p>
-        </article>
-        <article class="rule" id="review-workflows-for-archive-candidates">
-          <span class="rule-n" aria-hidden="true">03</span>
-          <h3><a href="#review-workflows-for-archive-candidates">Inventory workflows before building</a></h3>
-          <p class="rule-stmt">Before you stack new automation on a portal, inventory every workflow it already runs and flag the archive candidates and the silently-inactive ones — you can't build cleanly on a layer nobody has read.</p>
-        </article>
-        <article class="rule" id="baseline-before-you-build-scoring">
-          <span class="rule-n" aria-hidden="true">04</span>
-          <h3><a href="#baseline-before-you-build-scoring">Baseline before you score</a></h3>
-          <p class="rule-stmt">Before you build any scoring model, pull the current state of your existing deals and their associations read-only, so the model is designed against what the data actually shows — not against a guess.</p>
-        </article>
+        <ol class="rule-grid">
+          <li class="rule" id="start-read-only-with-a-portal-audit"><span class="rule-n" aria-hidden="true">01</span><h3>Diagnose before you build</h3></li>
+          <li class="rule" id="surface-coverage-gaps-as-a-deliverable"><span class="rule-n" aria-hidden="true">02</span><h3>Surface the coverage gaps</h3></li>
+          <li class="rule" id="review-workflows-for-archive-candidates"><span class="rule-n" aria-hidden="true">03</span><h3>Inventory workflows before building</h3></li>
+          <li class="rule" id="baseline-before-you-build-scoring"><span class="rule-n" aria-hidden="true">04</span><h3>Baseline before you score</h3></li>
+        </ol>
       </section>
       <section class="stage reveal" aria-labelledby="stage-govern-every-write">
         <h2 class="stage-h" id="stage-govern-every-write">Govern every write</h2>
-        <article class="rule" id="writes-are-opt-in">
-          <span class="rule-n" aria-hidden="true">05</span>
-          <h3><a href="#writes-are-opt-in">Make every write opt-in</a></h3>
-          <p class="rule-stmt">Every script that can change your CRM defaults to report-only — a write happens only when an operator deliberately opts that run in.</p>
-        </article>
-        <article class="rule" id="blank-only-writes">
-          <span class="rule-n" aria-hidden="true">06</span>
-          <h3><a href="#blank-only-writes">Fill blanks, never overwrite</a></h3>
-          <p class="rule-stmt">An automated job writes to a CRM field only when it is empty, so a value a person entered by hand is never silently overwritten.</p>
-        </article>
-        <article class="rule" id="stamp-the-writing-source">
-          <span class="rule-n" aria-hidden="true">07</span>
-          <h3><a href="#stamp-the-writing-source">Stamp every write's source</a></h3>
-          <p class="rule-stmt">Every automated write records which system produced it — a companion source field carrying a marker like model-and-date or the workflow that fired — so any value's origin is auditable and the rule about who may overwrite has something to read.</p>
-        </article>
-        <article class="rule" id="first-writer-wins-source-gate">
-          <span class="rule-n" aria-hidden="true">08</span>
-          <h3><a href="#first-writer-wins-source-gate">Let the first writer win</a></h3>
-          <p class="rule-stmt">When a native workflow and an API job can both write the same field, each enrolls only while a companion source flag is still unset and stamps that flag on write — so the fast path and the slow path never overwrite each other.</p>
-        </article>
-        <article class="rule" id="operationalize-the-clients-own-model">
-          <span class="rule-n" aria-hidden="true">09</span>
-          <h3><a href="#operationalize-the-clients-own-model">Operationalize their own model</a></h3>
-          <p class="rule-stmt">When a client already trusts a strategy model it authored itself — a territory map, a state-level scoring spreadsheet — operationalize that model into CRM properties and backfill it across the whole base in one governed, dry-run-first pass, rather than importing a scoring vendor's opinion the client never wrote.</p>
-          <p class="rule-badge" title="This rule holds, but not everything it describes is running. The limit is stated in the rule.">Shipped in part</p>
-        </article>
+        <ol class="rule-grid">
+          <li class="rule" id="writes-are-opt-in"><span class="rule-n" aria-hidden="true">05</span><h3>Make every write opt-in</h3></li>
+          <li class="rule" id="blank-only-writes"><span class="rule-n" aria-hidden="true">06</span><h3>Fill blanks, never overwrite</h3></li>
+          <li class="rule" id="stamp-the-writing-source"><span class="rule-n" aria-hidden="true">07</span><h3>Stamp every write's source</h3></li>
+          <li class="rule" id="first-writer-wins-source-gate"><span class="rule-n" aria-hidden="true">08</span><h3>Let the first writer win</h3></li>
+          <li class="rule" id="operationalize-the-clients-own-model"><span class="rule-n" aria-hidden="true">09</span><h3>Operationalize their own model <span class="rule-badge" title="This rule holds, but not everything it describes is running. The limit is stated in the rule.">Shipped in part</span></h3></li>
+        </ol>
       </section>
       <section class="stage reveal" aria-labelledby="stage-use-a-model-sparingly">
         <h2 class="stage-h" id="stage-use-a-model-sparingly">Use a model sparingly</h2>
-        <article class="rule" id="deterministic-collect-model-judges-batch-api">
-          <span class="rule-n" aria-hidden="true">10</span>
-          <h3><a href="#deterministic-collect-model-judges-batch-api">Reserve the model for judgment</a></h3>
-          <p class="rule-stmt">Let code do the reading, parsing, and writing; call the model only for the single judgment it alone can make — and run that call through a batch API at roughly half the cost of live requests.</p>
-        </article>
-        <article class="rule" id="confidence-gate-write-high-route-rest-to-human">
-          <span class="rule-n" aria-hidden="true">11</span>
-          <h3><a href="#confidence-gate-write-high-route-rest-to-human">Gate AI on confidence</a></h3>
-          <p class="rule-stmt">When a model enriches your records, write only the labels it's confident about and route everything below the threshold to a human review queue — a blank field is recoverable, a wrong one silently corrupts every report built on it.</p>
-        </article>
-        <article class="rule" id="mine-keyword-rules-from-model-output">
-          <span class="rule-n" aria-hidden="true">12</span>
-          <h3><a href="#mine-keyword-rules-from-model-output">Mine rules from the model</a></h3>
-          <p class="rule-stmt">Once a model has labeled your data, mine its output into deterministic rules — so cheap code handles the high-volume easy cases in real time and you pay the model only for the tail it alone can resolve.</p>
-        </article>
-        <article class="rule" id="never-re-pay-for-a-settled-record">
-          <span class="rule-n" aria-hidden="true">13</span>
-          <h3><a href="#never-re-pay-for-a-settled-record">Never re-pay for settled records</a></h3>
-          <p class="rule-stmt">Read only the records that still need a decision and write each one once, so a re-run re-pays the model nothing for work already done.</p>
-          <p class="rule-badge" title="This rule holds, but not everything it describes is running. The limit is stated in the rule.">Shipped in part</p>
-        </article>
+        <ol class="rule-grid">
+          <li class="rule" id="deterministic-collect-model-judges-batch-api"><span class="rule-n" aria-hidden="true">10</span><h3>Reserve the model for judgment</h3></li>
+          <li class="rule" id="confidence-gate-write-high-route-rest-to-human"><span class="rule-n" aria-hidden="true">11</span><h3>Gate AI on confidence</h3></li>
+          <li class="rule" id="mine-keyword-rules-from-model-output"><span class="rule-n" aria-hidden="true">12</span><h3>Mine rules from the model</h3></li>
+          <li class="rule" id="never-re-pay-for-a-settled-record"><span class="rule-n" aria-hidden="true">13</span><h3>Never re-pay for settled records <span class="rule-badge" title="This rule holds, but not everything it describes is running. The limit is stated in the rule.">Shipped in part</span></h3></li>
+        </ol>
       </section>
       <section class="stage reveal" aria-labelledby="stage-report-the-truth">
         <h2 class="stage-h" id="stage-report-the-truth">Report the truth</h2>
-        <article class="rule" id="gate-stages-on-completed-actions">
-          <span class="rule-n" aria-hidden="true">14</span>
-          <h3><a href="#gate-stages-on-completed-actions">Gate stages on completed actions</a></h3>
-          <p class="rule-stmt">A pipeline stage should be defined by something that verifiably happened — a meeting held, a proposal sent — not by rep intent like "proposal coming" or "verbal yes," because a stage that describes hope turns every forecast into a guess.</p>
-          <p class="rule-badge" title="This rule holds, but not everything it describes is running. The limit is stated in the rule.">Shipped in part</p>
-        </article>
-        <article class="rule" id="define-metric-before-report">
-          <span class="rule-n" aria-hidden="true">15</span>
-          <h3><a href="#define-metric-before-report">Define the metric before building the report</a></h3>
-          <p class="rule-stmt">Before building any report, agree the exact operational definition of each metric — what counts as held, as a demo, as a win, and which pipeline is excluded — because the intuitive definition usually undercounts real work.</p>
-        </article>
-        <article class="rule" id="convert-notes-to-countable-activity">
-          <span class="rule-n" aria-hidden="true">16</span>
-          <h3><a href="#convert-notes-to-countable-activity">Make notes countable</a></h3>
-          <p class="rule-stmt">Real activity typed into free-text notes stays invisible to your dashboards — convert those notes into structured call and meeting engagements so the work is credited without changing how reps work.</p>
-        </article>
-        <article class="rule" id="recover-blank-fields-from-timelines">
-          <span class="rule-n" aria-hidden="true">17</span>
-          <h3><a href="#recover-blank-fields-from-timelines">Derive the blank field</a></h3>
-          <p class="rule-stmt">A blank field is missing input, not missing information — when a value was never recorded, derive it from the record's own activity history rather than accepting the blank.</p>
-        </article>
-        <article class="rule" id="snapshot-scores-no-history">
-          <span class="rule-n" aria-hidden="true">18</span>
-          <h3><a href="#snapshot-scores-no-history">Snapshot what it won't keep</a></h3>
-          <p class="rule-stmt">If the platform keeps no history of a score, snapshot it on a schedule yourself — trend and movement over time only exist if you record them.</p>
-        </article>
+        <ol class="rule-grid">
+          <li class="rule" id="gate-stages-on-completed-actions"><span class="rule-n" aria-hidden="true">14</span><h3>Gate stages on completed actions <span class="rule-badge" title="This rule holds, but not everything it describes is running. The limit is stated in the rule.">Shipped in part</span></h3></li>
+          <li class="rule" id="define-metric-before-report"><span class="rule-n" aria-hidden="true">15</span><h3>Define the metric before building the report</h3></li>
+          <li class="rule" id="convert-notes-to-countable-activity"><span class="rule-n" aria-hidden="true">16</span><h3>Make notes countable</h3></li>
+          <li class="rule" id="recover-blank-fields-from-timelines"><span class="rule-n" aria-hidden="true">17</span><h3>Derive the blank field</h3></li>
+          <li class="rule" id="snapshot-scores-no-history"><span class="rule-n" aria-hidden="true">18</span><h3>Snapshot what it won't keep</h3></li>
+        </ol>
       </section>
       <section class="stage reveal" aria-labelledby="stage-ship-without-breaking-it">
         <h2 class="stage-h" id="stage-ship-without-breaking-it">Ship without breaking it</h2>
-        <article class="rule" id="canary-guarded-rollout">
-          <span class="rule-n" aria-hidden="true">19</span>
-          <h3><a href="#canary-guarded-rollout">Rehearse in production</a></h3>
-          <p class="rule-stmt">Build new automation disabled, rehearse it end-to-end in your live portal behind an enrollment guard proven to keep every real record out, and leave it off until you sign off.</p>
-          <p class="rule-badge" title="This rule holds, but not everything it describes is running. The limit is stated in the rule.">Shipped in part</p>
-        </article>
-        <article class="rule" id="trip-wire-backstop">
-          <span class="rule-n" aria-hidden="true">20</span>
-          <h3><a href="#trip-wire-backstop">Design for the trigger's blind spot</a></h3>
-          <p class="rule-stmt">When a single event is an automation's only trigger, design a separate trip-wire report for the failure mode where that event never fires.</p>
-          <p class="rule-badge" title="Specified in a build plan and never deployed. Included because the reasoning still holds.">Designed, never shipped</p>
-        </article>
-        <article class="rule" id="monitor-your-own-jobs">
-          <span class="rule-n" aria-hidden="true">21</span>
-          <h3><a href="#monitor-your-own-jobs">Monitor the jobs you ship</a></h3>
-          <p class="rule-stmt">Run a daily health check on your own shipped automations, not just the client's data, so a silent failure surfaces in hours instead of when a report finally goes stale.</p>
-        </article>
+        <ol class="rule-grid">
+          <li class="rule" id="canary-guarded-rollout"><span class="rule-n" aria-hidden="true">19</span><h3>Rehearse in production <span class="rule-badge" title="This rule holds, but not everything it describes is running. The limit is stated in the rule.">Shipped in part</span></h3></li>
+          <li class="rule" id="trip-wire-backstop"><span class="rule-n" aria-hidden="true">20</span><h3>Design for the trigger's blind spot <span class="rule-badge" title="Specified in a build plan and never deployed. Included because the reasoning still holds.">Designed, never shipped</span></h3></li>
+          <li class="rule" id="monitor-your-own-jobs"><span class="rule-n" aria-hidden="true">21</span><h3>Monitor the jobs you ship</h3></li>
+        </ol>
       </section>
       <section class="stage reveal" aria-labelledby="stage-retire-cleanly">
         <h2 class="stage-h" id="stage-retire-cleanly">Retire cleanly</h2>
-        <article class="rule" id="clean-decommission">
-          <span class="rule-n" aria-hidden="true">22</span>
-          <h3><a href="#clean-decommission">Leave nothing running</a></h3>
-          <p class="rule-stmt">When an engagement ends, deliberately retire every automation you shipped and stop its triggers at the source — an unowned job left running is a liability, not a parting gift.</p>
-        </article>
+        <ol class="rule-grid">
+          <li class="rule" id="clean-decommission"><span class="rule-n" aria-hidden="true">22</span><h3>Leave nothing running</h3></li>
+        </ol>
       </section>
   </div>
 
   <section class="pb-cta" aria-labelledby="cta-h">
     <div class="wrap">
-      <h2 id="cta-h">Start where every engagement starts.</h2>
-      <p>If any of these named a problem you recognize, the first step is the one every engagement starts with — a free 30-minute read-only look at your actual portal, and a prioritized fix list that's yours to keep whether or not we work together.</p>
-      <a class="btn btn-accent" href="https://calendar.app.google/v3L6z6QH2hd1MTpt9">Book a free 30-min CRM audit</a>
+      <h2 id="cta-h">The names are here. The sentences, in the PDF.</h2>
+      <p>You've read the twenty-two names. The PDF gives each its one plain sentence — what the rule actually means — plus a legend for the two honesty labels. No form, no email. It's the same list, in five pages you can keep.</p>
+      <a class="btn btn-accent" href="downloads/crm-automation-playbook.pdf">Download the one-sentence version (PDF)</a>
+      <p class="pb-cta-alt">If you'd rather start with your own portal, the <a href="https://calendar.app.google/v3L6z6QH2hd1MTpt9">free 30-minute read-only audit</a> is still there when you want it.</p>
     </div>
   </section>
 
