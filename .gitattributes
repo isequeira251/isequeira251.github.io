@@ -1,0 +1,11 @@
+# Binary assets must never get EOL conversion. Git sniffs text-vs-binary by looking for
+# NUL bytes in the first 8000; a small, base-14-font PDF has none, so git guesses "text"
+# and a checkout with core.autocrlf would rewrite its LFs as CRLFs and corrupt the file.
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.woff binary
+*.woff2 binary

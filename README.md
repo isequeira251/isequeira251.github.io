@@ -7,7 +7,9 @@ Self-contained static pages — no build step, no backend, no dependencies. Visi
 Pages:
 
 - `index.html` — the consulting home page
-- `playbook.html` — **The CRM Automation Playbook**: 22 rules for changing a live HubSpot portal, drawn from real consulting engagements. Every rule carries an anonymized "In practice" citation, and any rule that is not fully shipped is labeled as such ("Shipped in part", "Designed, never shipped"). Client names are withheld by agreement; no rule states an outcome or ROI figure, because none was measured.
+- `playbook.html` — **The CRM Automation Playbook**: 22 rules for changing a live HubSpot portal, drawn from real consulting engagements. Every rule carries an anonymized "In practice" citation, and any rule that is not fully shipped is labeled as such ("Shipped in part", "Designed, never shipped"). Client names are withheld by agreement; no rule states an outcome or ROI figure, because none was measured. Offers `downloads/crm-automation-playbook.pdf` (the rule statements only) as an **ungated** download — deliberately not behind the field-guide form, since the page itself is free.
+
+`playbook.html` is generated: edit the template + content spec, not the output. The two gated field-guide PDFs in `downloads/` are unrelated to the playbook PDF.
 
 Related public artifacts:
 
