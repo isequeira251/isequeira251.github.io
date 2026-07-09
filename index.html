@@ -142,7 +142,7 @@
   .nav-toggle[aria-expanded="true"] .nav-toggle-bars::before { top: 0; transform: rotate(45deg); }
   .nav-toggle[aria-expanded="true"] .nav-toggle-bars::after { top: 0; transform: rotate(-45deg); }
 
-  @media (max-width: 780px) {
+  @media (max-width: 860px) {
     nav.links { flex-wrap: wrap; }
     .nav-cluster { gap: 10px; }
     .js .nav-toggle { display: grid; place-items: center; width: 44px; height: 44px; }
@@ -290,6 +290,17 @@
   .principle h3::before { content: "— "; color: var(--orange); }
   .principle p { font-size: 14.5px; color: #C7D2E2; }
 
+  /* Playbook teaser */
+  .pbteaser { background: var(--wash-warm); }
+  .pb-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 34px; }
+  @media (max-width: 980px) { .pb-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .pb-grid { grid-template-columns: 1fr; } }
+  .pb-card { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 18px; box-shadow: var(--shadow); }
+  .pb-card h3 { font-size: 15.5px; margin-bottom: 7px; }
+  .pb-card p { font-size: 14px; color: var(--muted); }
+  .pb-more { margin-top: 30px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .pb-note { font-size: 14px; color: var(--muted); }
+
   /* About + contact */
   .about p { max-width: 70ch; font-size: 16px; margin-bottom: 14px; }
   .contact { background: var(--wash-warm); text-align: center; }
@@ -387,6 +398,7 @@
         <a href="#artifacts">Live tools</a>
         <a href="#guides">Guides</a>
         <a href="#how">How I work</a>
+        <a href="playbook.html">Playbook</a>
         <a href="#faq">FAQ</a>
       </nav>
       <a class="btn btn-accent cta" href="https://calendar.app.google/v3L6z6QH2hd1MTpt9">Book a free audit</a>
@@ -697,6 +709,53 @@
     </div>
   </section>
 
+  <!-- PRINCIPLES / PLAYBOOK TEASER -->
+  <section id="principles" class="pbteaser reveal" aria-labelledby="principles-h">
+    <div class="wrap">
+      <span class="eyebrow">How I think</span>
+      <h2 id="principles-h">The rails don't make the calls.</h2>
+      <p class="lede">The safety rails above are mechanics — the same checks every engagement runs through, the same way each time. What they can't encode is judgment: what I read before touching anything, what I'll call true in a report, what I refuse to build yet, and what I switch off when the work is done. The rails keep the work safe. These calls decide what the work is.</p>
+      <div class="pb-grid">
+        <div class="pb-card">
+          <h3>Diagnose before you build</h3>
+          <p>You can't responsibly change a portal you haven't read yet. Every engagement opens with a fixed-scope, read-only audit whose findings — not a preset roadmap — set what gets built, and in what order.</p>
+        </div>
+        <div class="pb-card">
+          <h3>Leave nothing running</h3>
+          <p>An automation I ship is something I'm also responsible for switching off. When the work ends, every job I built gets retired and its trigger stopped — so nothing keeps writing to your CRM after I'm gone, unwatched and unowned.</p>
+        </div>
+        <div class="pb-card">
+          <h3>Define the metric before building the report</h3>
+          <p>The intuitive definition of a metric usually undercounts the real work. Before a report gets built, pin down exactly what counts — as held, as a demo, as a win — and which pipeline is left out entirely.</p>
+        </div>
+        <div class="pb-card">
+          <h3>Operationalize their own model</h3>
+          <p>When a client already trusts a strategy it wrote itself, buying a vendor's score on top just adds an opinion nobody there authored. I operationalize the model you already own into CRM properties and backfill it across your base in one governed, dry-run-first pass.</p>
+        </div>
+        <div class="pb-card">
+          <h3>Surface the coverage gaps</h3>
+          <p>Some CRM problems aren't bad data — they're missing data: the renewal that never entered the pipeline, the account that belongs to no one. An absent record raises no error, so I detect those gaps and hand them back as named findings.</p>
+        </div>
+        <div class="pb-card">
+          <h3>Reserve the model for judgment</h3>
+          <p>A data job is mostly plumbing — read the records, parse them, write them back — and code does that more reliably than a model ever will. Save the model for the one step that actually needs a judgment call, and run even that through a batch API to keep it cheap.</p>
+        </div>
+        <div class="pb-card">
+          <h3>Derive the blank field</h3>
+          <p>A blank field usually means nobody typed the answer — not that the answer is gone. The record's own trail of calls, meetings, and notes often still holds it, ready to be derived back into a clean, reportable field.</p>
+        </div>
+        <div class="pb-card">
+          <h3>Monitor the jobs you ship</h3>
+          <p>The automations I ship get watched too, not just your data — a morning pass/fail/overdue check on my own tooling. A job I built that quietly stops is mine to catch in hours, not yours to discover when a report goes stale.</p>
+        </div>
+      </div>
+      <p class="pb-more">
+        <a class="btn btn-ghost" href="playbook.html">Read all 22 rules &rarr;</a>
+        <span class="pb-note">Including the one I designed and never shipped &mdash; and why.</span>
+      </p>
+    </div>
+  </section>
+
   <!-- ABOUT -->
   <section class="about reveal" aria-labelledby="about-h">
     <div class="wrap">
@@ -942,6 +1001,11 @@
     });
     document.querySelectorAll('a[href*="post-signature-flowchart"]').forEach(function (a) {
       a.addEventListener('click', function () { gcEvent('tool/flowchart'); });
+    });
+    document.querySelectorAll('a[href="playbook.html"]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        gcEvent('playbook/' + (a.closest('header.site') ? 'header' : 'section'));
+      });
     });
     document.querySelectorAll('.break').forEach(function (d) {
       d.addEventListener('toggle', function () {
