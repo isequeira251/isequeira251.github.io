@@ -7,9 +7,13 @@ Self-contained static pages — no build step, no backend, no dependencies. Visi
 Pages:
 
 - `index.html` — the consulting home page
-- `playbook.html` — **The CRM Automation Playbook**: 22 rules for changing a live HubSpot portal, drawn from real consulting engagements. Every rule carries an anonymized "In practice" citation, and any rule that is not fully shipped is labeled as such ("Shipped in part", "Designed, never shipped"). Client names are withheld by agreement; no rule states an outcome or ROI figure, because none was measured. Offers `downloads/crm-automation-playbook.pdf` (the rule statements only) as an **ungated** download — deliberately not behind the field-guide form, since the page itself is free.
+- `playbook.html` — **The CRM Automation Playbook**: the names of 22 rules for changing a live HubSpot portal, drawn from real consulting engagements, grouped by stage. Any rule that is not fully shipped is labeled on the page ("Shipped in part", "Designed, never shipped"). Client names are withheld by agreement; nothing on the page or in the PDF states an outcome or ROI figure, because none was measured.
 
-`playbook.html` is generated: edit the template + content spec, not the output. The two gated field-guide PDFs in `downloads/` are unrelated to the playbook PDF.
+The page gives the rule **names** for free. `downloads/crm-automation-playbook.pdf` adds the one-sentence statement of each rule plus a legend for the labels, and sits behind the same lead form as the field guides (work email, phone, company → private Apps Script → private Google Sheet). One unlock, stored in the visitor's browser under `fg-unlocked`, opens every download on the site.
+
+Note the gate is **client-side only**: it hides the download until the form is filled, but every file in `downloads/` is served from a public URL and can be fetched directly. It collects details from people who cooperate; it does not restrict access.
+
+`playbook.html` is generated — edit the template and the content spec, not the output.
 
 Related public artifacts:
 
