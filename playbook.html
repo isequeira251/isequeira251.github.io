@@ -173,6 +173,8 @@
   .pb-hero h1 { font-size: clamp(30px, 4.8vw, 46px); max-width: 20ch; margin-bottom: 18px; }
   .crumb { font-size: 14px; color: var(--muted); margin-bottom: 18px; }
   .crumb a { color: var(--muted); }
+  .pb-dl { margin-top: 28px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .pb-dl-note { font-size: 14px; color: var(--muted); }
 
   /* Contents */
   .toc { background: var(--wash); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 28px 0; }
@@ -279,6 +281,10 @@
       <span class="eyebrow">The playbook</span>
       <h1 id="pb-h">Twenty-two rules for changing a CRM you can't afford to break — including the one I never shipped.</h1>
       <p class="lede">This is the long version of how I work — the reasoning under every safety rail on the home page. Twenty-two rules, in the order I actually apply them: diagnose before touching, govern every write, use a model only where it earns its place, report the truth over the flattering number, and switch it all off cleanly when the work ends. Each rule names a failure I've watched happen, the fix, and the honest limit of that fix. Most have shipped; a couple are partial; one I only ever designed — and I mark which is which, because the label is the point.</p>
+      <p class="pb-dl">
+        <a class="btn btn-ghost" href="downloads/crm-automation-playbook.pdf">Save the 22 rules as a PDF &darr;</a>
+        <span class="pb-dl-note">No form, no email &mdash; the rules only. The reasoning behind each one stays on this page.</span>
+      </p>
     </div>
   </section>
 
@@ -558,6 +564,9 @@
     });
     document.querySelectorAll('.toc a').forEach(function (a) {
       a.addEventListener('click', function () { gcEvent('playbook-toc' + a.getAttribute('href')); });
+    });
+    document.querySelectorAll('a[href$=".pdf"]').forEach(function (a) {
+      a.addEventListener('click', function () { gcEvent('playbook-pdf'); });
     });
   })();
 </script>
