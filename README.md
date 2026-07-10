@@ -11,7 +11,7 @@ Pages:
 
 The two field guides in `downloads/` download directly from their cards on the home page — no form.
 
-The playbook page gives the rule **names** for free. `downloads/crm-automation-playbook.pdf` adds the one-sentence statement of each rule plus a legend for the labels, and is the site's only gated download (work email, phone, company → private Apps Script → private Google Sheet). The unlock is stored in the visitor's browser under `fg-unlocked`; the same key still opens the gates on the related artifact sites.
+The playbook page gives the rule **names** for free. `downloads/crm-automation-playbook.pdf` adds the one-sentence statement of each rule plus a legend for the labels, and is the **only gated asset on the site** (work email, phone, company → private Apps Script → private Google Sheet). The unlock is stored in the visitor's browser under `fg-unlocked`. The two artifact sites below used to share that key; their gates are gone and they now open straight up.
 
 Note the gate is **client-side only**: it hides the download until the form is filled, but every file in `downloads/` is served from a public URL and can be fetched directly. It collects details from people who cooperate; it does not restrict access.
 
