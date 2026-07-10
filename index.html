@@ -607,7 +607,7 @@
     <div class="wrap">
       <span class="eyebrow">Live tools</span>
       <h2 id="artifacts-h">Don't take my word for it — click around.</h2>
-      <p class="lede">Client work lives in private repos and private portals. These are free to use — a quick intro form (work email, phone, company) opens them, and one unlock covers everything on this site, field guides included. What you do inside the tools stays in your browser.</p>
+      <p class="lede">Client work lives in private repos and private portals. These are free to use — a quick intro form (work email, phone, company) opens them, and one unlock covers everything else gated on this site. What you do inside the tools stays in your browser.</p>
       <div class="cards">
         <div class="card artifact">
           <span class="pill">Free tool</span>
@@ -630,26 +630,26 @@
     <div class="wrap">
       <span class="eyebrow">Field guides</span>
       <h2 id="guides-h">The field guides, in PDF.</h2>
-      <p class="lede">Slide-deck field guides distilled from the portals I work in — six precision lessons each, in exchange for your work details. The same unlock also opens the <a href="playbook.html">playbook</a> PDF — all twenty-two rules, each stated in a sentence.</p>
+      <p class="lede">Slide-deck field guides distilled from the portals I work in — six precision lessons each, free to download, no form. The <a href="playbook.html">playbook</a> PDF — all twenty-two rules, each stated in a sentence — is the one download that still asks who you are.</p>
       <div class="cards">
         <div class="card artifact">
           <span class="pill">Field guide PDF</span>
           <h3>Data Quality &amp; Deduplication</h3>
           <p>Six lessons on spotting, preventing, and fixing the data problems that silently corrupt a HubSpot portal: duplicates, property pollution, Original Source overwrites, required-field gaps, stale contacts, and import-mode traps.</p>
-          <p class="go"><a href="#gate">Get the PDF ↓</a></p>
+          <p class="go"><a class="guide-dl" href="downloads/field-guide-data-quality-dedup.pdf" download>Download the PDF →</a></p>
         </div>
         <div class="card artifact">
           <span class="pill">Field guide PDF</span>
           <h3>Workflows &amp; Automation</h3>
           <p>How to build automations that don't betray you: re-enrollment defaults, timezone delay traps, branch-timing races, suppression vs. goal exits, irreversible CRM mutations, and silent failure monitoring.</p>
-          <p class="go"><a href="#gate">Get the PDF ↓</a></p>
+          <p class="go"><a class="guide-dl" href="downloads/field-guide-workflows-automation.pdf" download>Download the PDF →</a></p>
         </div>
       </div>
 
       <div class="gate" id="gate">
         <form id="gate-form" novalidate>
-          <h3>Unlock the downloads</h3>
-          <p class="quiet">Tell me who you are and all three PDFs unlock instantly — no email round-trip.</p>
+          <h3>Unlock the playbook</h3>
+          <p class="quiet">The field guides above are yours already. Tell me who you are and the playbook PDF unlocks instantly — no email round-trip.</p>
           <div class="field">
             <label for="g-email">Work email</label>
             <input id="g-email" name="email" type="email" autocomplete="email" required>
@@ -666,19 +666,17 @@
             <label for="g-website">Website</label>
             <input id="g-website" name="website" type="text" tabindex="-1" autocomplete="off">
           </div>
-          <button class="btn btn-accent" type="submit" id="gate-submit">Unlock the downloads</button>
+          <button class="btn btn-accent" type="submit" id="gate-submit">Unlock the playbook</button>
           <p class="form-error" role="alert"></p>
           <p class="privacy">Your details go to me alone — a private spreadsheet, no third-party marketing tools, no cookies. I'll only use them to follow up about HubSpot operations. The rest of this site stays tracking-free.</p>
         </form>
         <div class="dl-ready" role="status">
-          <h3>You're in — here they are:</h3>
+          <h3>You're in — here it is:</h3>
           <div class="dl-links">
-            <a class="btn btn-primary" href="downloads/field-guide-data-quality-dedup.pdf" download>Data Quality &amp; Dedup (PDF)</a>
-            <a class="btn btn-primary" href="downloads/field-guide-workflows-automation.pdf" download>Workflows &amp; Automation (PDF)</a>
             <a class="btn btn-primary" href="downloads/crm-automation-playbook.pdf" download>The 22 rules, stated (PDF)</a>
           </div>
         </div>
-        <noscript><p class="privacy">This form needs JavaScript. No JS? Email me and I'll send the PDFs directly.</p></noscript>
+        <noscript><p class="privacy">This form needs JavaScript, but the two field guides above download without it. No JS? Email me and I'll send the playbook directly.</p></noscript>
       </div>
     </div>
   </section>
@@ -927,7 +925,13 @@
       });
     }
 
-    // Field-guide gate: details go to a private Apps Script endpoint -> Google Sheet.
+    // The field guides download straight from the card — no gate, just a count.
+    document.querySelectorAll('.guide-dl').forEach(function (a) {
+      var which = a.getAttribute('href').indexOf('data-quality') !== -1 ? 'data-quality' : 'workflows';
+      a.addEventListener('click', function () { gcEvent('guide-download/' + which); });
+    });
+
+    // Playbook gate: details go to a private Apps Script endpoint -> Google Sheet.
     var GATE_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyoCk5HuTD6tgv7BzwImTYBcSRNAx0L5rKQCJetqo9GvYEpth8NGno14FxHjs9BbRGarg/exec';
     var gateForm = document.getElementById('gate-form');
     if (gateForm) {
@@ -945,7 +949,7 @@
         var err = gateForm.querySelector('.form-error');
         err.classList.remove('show');
         if (!email || email.indexOf('@') === -1 || !phone || !company) {
-          err.textContent = 'All three fields are needed to unlock the PDFs.';
+          err.textContent = 'All three fields are needed to unlock the PDF.';
           err.classList.add('show');
           return;
         }
@@ -953,21 +957,20 @@
         btn.disabled = true; btn.textContent = 'Unlocking…';
         fetch(GATE_ENDPOINT, {
           method: 'POST',
-          body: new URLSearchParams({ email: email, phone: phone, company: company, website: document.getElementById('g-website').value.trim(), deck: 'both' })
+          body: new URLSearchParams({ email: email, phone: phone, company: company, website: document.getElementById('g-website').value.trim(), deck: 'playbook' })
         }).then(function (res) {
           if (!res.ok) throw new Error('bad status');
           try { localStorage.setItem('fg-unlocked', '1'); } catch (e) {}
           gcEvent('guide-unlock');
           unlock();
         }).catch(function () {
-          btn.disabled = false; btn.textContent = 'Unlock the downloads';
-          err.textContent = 'Something went wrong sending the form — try again, or email me and I\'ll send the PDFs directly.';
+          btn.disabled = false; btn.textContent = 'Unlock the playbook';
+          err.textContent = 'Something went wrong sending the form — try again, or email me and I\'ll send the PDF directly.';
           err.classList.add('show');
         });
       });
       document.querySelectorAll('.dl-links a').forEach(function (a) {
-        var which = a.getAttribute('href').indexOf('data-quality') !== -1 ? 'data-quality' : 'workflows';
-        a.addEventListener('click', function () { gcEvent('guide-download/' + which); });
+        a.addEventListener('click', function () { gcEvent('guide-download/playbook'); });
       });
     }
 

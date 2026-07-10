@@ -9,7 +9,9 @@ Pages:
 - `index.html` — the consulting home page
 - `playbook.html` — **The CRM Automation Playbook**: the names of 22 rules for changing a live HubSpot portal, drawn from real consulting engagements, grouped by stage. Any rule that is not fully shipped is labeled on the page ("Shipped in part", "Designed, never shipped"). Client names are withheld by agreement; nothing on the page or in the PDF states an outcome or ROI figure, because none was measured.
 
-The page gives the rule **names** for free. `downloads/crm-automation-playbook.pdf` adds the one-sentence statement of each rule plus a legend for the labels, and sits behind the same lead form as the field guides (work email, phone, company → private Apps Script → private Google Sheet). One unlock, stored in the visitor's browser under `fg-unlocked`, opens every download on the site.
+The two field guides in `downloads/` download directly from their cards on the home page — no form.
+
+The playbook page gives the rule **names** for free. `downloads/crm-automation-playbook.pdf` adds the one-sentence statement of each rule plus a legend for the labels, and is the site's only gated download (work email, phone, company → private Apps Script → private Google Sheet). The unlock is stored in the visitor's browser under `fg-unlocked`; the same key still opens the gates on the related artifact sites.
 
 Note the gate is **client-side only**: it hides the download until the form is filled, but every file in `downloads/` is served from a public URL and can be fetched directly. It collects details from people who cooperate; it does not restrict access.
 

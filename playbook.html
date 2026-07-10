@@ -355,8 +355,8 @@
 
       <div class="gate">
         <form id="gate-form" novalidate>
-          <h3>Unlock every download</h3>
-          <p class="quiet">One form opens this PDF and both field guides. It unlocks instantly, right here — no confirmation email, no waiting.</p>
+          <h3>Unlock the playbook</h3>
+          <p class="quiet">One form opens this PDF, instantly, right here — no confirmation email, no waiting. (The two field guides need no form at all.)</p>
           <div class="field">
             <label for="g-email">Work email</label>
             <input id="g-email" name="email" type="email" autocomplete="email" required>
@@ -373,7 +373,7 @@
             <label for="g-website">Website</label>
             <input id="g-website" name="website" type="text" tabindex="-1" autocomplete="off">
           </div>
-          <button class="btn btn-accent" type="submit" id="gate-submit">Unlock the downloads</button>
+          <button class="btn btn-accent" type="submit" id="gate-submit">Unlock the playbook</button>
           <p class="form-error" role="alert"></p>
           <p class="privacy">Your details go to me alone &mdash; a private spreadsheet, no third-party marketing tools, no cookies. I'll only use them to follow up about HubSpot operations. The rest of this site stays tracking-free.</p>
         </form>
@@ -382,7 +382,7 @@
           <div class="dl-links">
             <a class="btn btn-primary" href="downloads/crm-automation-playbook.pdf" download>The 22 rules, stated (PDF)</a>
           </div>
-          <p class="privacy">Five pages, made to print. Your unlock also covers both field guides on this site.</p>
+          <p class="privacy">Five pages, made to print. Both <a href="index.html#guides">field guides</a> download free, no form.</p>
         </div>
         <noscript><p class="privacy">This form needs JavaScript. No JS? Email me and I'll send the PDF directly.</p></noscript>
       </div>
@@ -451,7 +451,7 @@
       a.addEventListener('click', function () { gcEvent('playbook-pdf'); });
     });
 
-    // Lead gate — same endpoint and same shared unlock key as the field guides on the home page.
+    // Lead gate — same endpoint and same shared unlock key as the gate on the home page.
     var GATE_ENDPOINT = 'https://script.google.com/macros/s/AKfycbyoCk5HuTD6tgv7BzwImTYBcSRNAx0L5rKQCJetqo9GvYEpth8NGno14FxHjs9BbRGarg/exec';
     var gateForm = document.getElementById('gate-form');
     if (gateForm) {
