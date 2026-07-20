@@ -630,7 +630,7 @@
     <div class="wrap">
       <span class="eyebrow">Field guides</span>
       <h2 id="guides-h">The field guides, in PDF.</h2>
-      <p class="lede">Slide-deck field guides distilled from the portals I work in — six precision lessons each, free to download, no form. Two downloads still ask who you are: the newest guide, and the <a href="playbook.html">playbook</a> PDF — all twenty-two rules, each stated in a sentence.</p>
+      <p class="lede">Slide-deck field guides distilled from the portals I work in — six precision lessons each, free to download, no form. A few downloads still ask who you are: the two newest guides, and the <a href="playbook.html">playbook</a> PDF — all twenty-two rules, each stated in a sentence.</p>
       <div class="cards">
         <div class="card artifact">
           <span class="pill">Field guide PDF</span>
@@ -645,17 +645,23 @@
           <p class="go"><a class="guide-dl" href="downloads/field-guide-workflows-automation.pdf" download>Download the PDF →</a></p>
         </div>
         <div class="card artifact">
-          <span class="pill">New field guide</span>
+          <span class="pill">Gated field guide</span>
           <h3>Lists &amp; Segmentation</h3>
           <p>Six lessons on the list mechanics that make or break segmentation: active-list re-evaluation surprises, static lists that silently go stale, AND/OR filter-logic traps, double-firing membership triggers, layered campaign suppression, and processing lag past 100k contacts.</p>
-          <p class="go"><a class="guide-locked" href="#gate">Unlock the PDF →</a></p>
+          <p class="go"><a class="guide-locked" href="#gate" data-pdf="downloads/field-guide-lists-segmentation.pdf" data-name="lists">Unlock the PDF →</a></p>
+        </div>
+        <div class="card artifact">
+          <span class="pill">New field guide</span>
+          <h3>Sequences: The Sales Outreach Engine</h3>
+          <p>Six lessons on making HubSpot Sequences actually work: enrollment eligibility and daily send limits, calendar-vs-business-day timing traps, personalization tokens with real fallbacks, reply detection and inbox-polling health, step-level performance analysis, and the Sequences-vs-Workflows decision heuristic.</p>
+          <p class="go"><a class="guide-locked" href="#gate" data-pdf="downloads/field-guide-sequences.pdf" data-name="sequences">Unlock the PDF →</a></p>
         </div>
       </div>
 
       <div class="gate" id="gate">
         <form id="gate-form" novalidate>
           <h3>Unlock the gated PDFs</h3>
-          <p class="quiet">The first two field guides are yours already. Tell me who you are and the playbook and the new Lists &amp; Segmentation guide unlock instantly — no email round-trip.</p>
+          <p class="quiet">The first two field guides are yours already. Tell me who you are and the playbook, the Lists &amp; Segmentation guide, and the new Sequences guide all unlock instantly — no email round-trip.</p>
           <div class="field">
             <label for="g-email">Work email</label>
             <input id="g-email" name="email" type="email" autocomplete="email" required>
@@ -672,7 +678,7 @@
             <label for="g-website">Website</label>
             <input id="g-website" name="website" type="text" tabindex="-1" autocomplete="off">
           </div>
-          <button class="btn btn-accent" type="submit" id="gate-submit">Unlock both PDFs</button>
+          <button class="btn btn-accent" type="submit" id="gate-submit">Unlock the PDFs</button>
           <p class="form-error" role="alert"></p>
           <p class="privacy">Your details go to me alone — a private spreadsheet, no third-party marketing tools, no cookies. I'll only use them to follow up about HubSpot operations. The rest of this site stays tracking-free.</p>
         </form>
@@ -681,6 +687,7 @@
           <div class="dl-links">
             <a class="btn btn-primary" href="downloads/crm-automation-playbook.pdf" download>The 22 rules, stated (PDF)</a>
             <a class="btn btn-primary" href="downloads/field-guide-lists-segmentation.pdf" download>Lists &amp; Segmentation (PDF)</a>
+            <a class="btn btn-primary" href="downloads/field-guide-sequences.pdf" download>Sequences (PDF)</a>
           </div>
         </div>
         <noscript><p class="privacy">This form needs JavaScript, but the first two field guides download without it. No JS? Email me and I'll send the gated PDFs directly.</p></noscript>
@@ -946,12 +953,13 @@
       var unlock = function () {
         gateForm.style.display = 'none';
         gateReady.classList.add('show');
-        // The locked card link becomes a direct download once the visitor is in.
+        // Each locked card link becomes a direct download to its own PDF once the visitor is in.
         document.querySelectorAll('.guide-locked').forEach(function (a) {
-          a.setAttribute('href', 'downloads/field-guide-lists-segmentation.pdf');
-          a.setAttribute('download', '');
+          var pdf = a.getAttribute('data-pdf');
+          var name = a.getAttribute('data-name') || 'guide';
+          if (pdf) { a.setAttribute('href', pdf); a.setAttribute('download', ''); }
           a.textContent = 'Download the PDF →';
-          a.addEventListener('click', function () { gcEvent('guide-download/lists'); });
+          a.addEventListener('click', function () { gcEvent('guide-download/' + name); });
         });
       };
       try { if (localStorage.getItem('fg-unlocked')) unlock(); } catch (e) {}
@@ -971,20 +979,23 @@
         btn.disabled = true; btn.textContent = 'Unlocking…';
         fetch(GATE_ENDPOINT, {
           method: 'POST',
-          body: new URLSearchParams({ email: email, phone: phone, company: company, website: document.getElementById('g-website').value.trim(), deck: 'playbook+lists' })
+          body: new URLSearchParams({ email: email, phone: phone, company: company, website: document.getElementById('g-website').value.trim(), deck: 'playbook+lists+sequences' })
         }).then(function (res) {
           if (!res.ok) throw new Error('bad status');
           try { localStorage.setItem('fg-unlocked', '1'); } catch (e) {}
           gcEvent('guide-unlock');
           unlock();
         }).catch(function () {
-          btn.disabled = false; btn.textContent = 'Unlock both PDFs';
+          btn.disabled = false; btn.textContent = 'Unlock the PDFs';
           err.textContent = 'Something went wrong sending the form — try again, or email me and I\'ll send the PDF directly.';
           err.classList.add('show');
         });
       });
       document.querySelectorAll('.dl-links a').forEach(function (a) {
-        var which = a.getAttribute('href').indexOf('lists-segmentation') !== -1 ? 'lists' : 'playbook';
+        var href = a.getAttribute('href');
+        var which = href.indexOf('sequences') !== -1 ? 'sequences'
+          : href.indexOf('lists-segmentation') !== -1 ? 'lists'
+          : 'playbook';
         a.addEventListener('click', function () { gcEvent('guide-download/' + which); });
       });
     }
