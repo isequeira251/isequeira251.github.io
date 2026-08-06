@@ -85,6 +85,10 @@
     --wash-warm: #FBF7F3;
     --radius: 14px;
     --shadow: 0 1px 2px rgba(22,38,63,.06), 0 8px 24px -12px rgba(22,38,63,.18);
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    /* One drawn icon family: a single stroke weight across every disclosure control. */
+    --icon-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 6.5l4 4 4-4'/%3E%3C/svg%3E");
+    --icon-x: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='2.25' stroke-linecap='round'%3E%3Cpath d='M4 4l8 8M12 4l-8 8'/%3E%3C/svg%3E");
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; scroll-padding-top: 84px; }
@@ -107,7 +111,7 @@
     text-transform: uppercase; color: var(--orange-deep); margin-bottom: 14px;
   }
   h1, h2, h3 { line-height: 1.18; color: var(--navy); letter-spacing: -0.015em; }
-  h2 { font-size: clamp(26px, 4vw, 36px); margin-bottom: 12px; }
+  h2 { font-size: clamp(27px, 4.2vw, 40px); margin-bottom: 14px; }
   .lede { font-size: clamp(16px, 2vw, 19px); color: var(--muted); max-width: 62ch; }
   section { padding: 72px 0; }
 
@@ -124,13 +128,14 @@
     color: var(--orange); font-weight: 800; font-size: 15px;
     display: grid; place-items: center; letter-spacing: .02em;
   }
-  .brand-name { font-weight: 700; color: var(--navy); font-size: 16px; }
+  .brand-name { font-weight: 700; color: var(--navy); font-size: 16px; white-space: nowrap; }
   .brand-name small { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
   .nav-cluster { display: flex; align-items: center; gap: 26px; }
   nav.links { display: flex; gap: 26px; align-items: center; }
   nav.links a { text-decoration: none; color: var(--ink); font-size: 15px; font-weight: 500; }
   nav.links a:hover { color: var(--orange-dark); }
   nav.links a.cta { color: #fff; }
+  .nav .btn.cta { white-space: nowrap; }
 
   /* Mobile menu toggle (progressively enhanced; only shown when JS is on) */
   .nav-toggle { display: none; padding: 0; border: 1px solid var(--line); background: #fff; border-radius: 10px; cursor: pointer; }
@@ -159,7 +164,9 @@
   }
   @media (max-width: 430px) {
     .brand-name small { display: none; }
-    .nav .btn { padding: 11px 14px; font-size: 14px; }
+    .nav .btn { padding: 11px 13px; font-size: 14px; }
+    /* The header CTA sheds its middle words rather than wrapping out of the bar. */
+    .cta-long { display: none; }
   }
 
   /* Buttons */
@@ -177,13 +184,13 @@
   .btn-ghost:hover { border-color: var(--navy); }
 
   /* Hero */
-  .hero { padding: 84px 0 64px; background:
+  .hero { padding: 96px 0 76px; background:
     radial-gradient(1100px 420px at 85% -10%, rgba(46,125,123,.10), transparent 60%),
     radial-gradient(900px 420px at -10% 0%, rgba(226,104,60,.08), transparent 55%),
     var(--paper); }
-  .hero h1 { font-size: clamp(34px, 5.6vw, 56px); max-width: 17ch; margin-bottom: 18px; }
+  .hero h1 { font-size: clamp(36px, 6vw, 72px); max-width: 19ch; margin-bottom: 20px; }
   .hero h1 em { font-style: normal; color: var(--orange-dark); }
-  .hero .lede { margin-bottom: 30px; }
+  .hero .lede { font-size: clamp(17px, 2.1vw, 20.5px); margin-bottom: 34px; }
   .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
   .hero-note { font-size: 14px; color: var(--muted); }
 
@@ -205,9 +212,16 @@
     font-size: 15px; font-weight: 600; color: var(--navy); border-radius: 12px;
   }
   .break summary::-webkit-details-marker { display: none; }
-  .break summary::before { content: "✕"; content: "✕" / ""; color: var(--orange-deep); font-weight: 800; }
-  .break summary::after { content: "+"; margin-left: auto; color: var(--muted); font-weight: 700; font-size: 19px; line-height: 1; }
-  .break[open] summary::after { content: "–"; }
+  .break summary::before {
+    content: ""; flex: none; width: 13px; height: 13px; background: var(--orange-deep);
+    -webkit-mask: var(--icon-x) center / contain no-repeat; mask: var(--icon-x) center / contain no-repeat;
+  }
+  .break summary::after {
+    content: ""; flex: none; margin-left: auto; width: 16px; height: 16px; background: var(--muted);
+    -webkit-mask: var(--icon-chevron) center / contain no-repeat; mask: var(--icon-chevron) center / contain no-repeat;
+    transition: transform .2s var(--ease-out);
+  }
+  .break[open] summary::after { transform: rotate(180deg); }
   .break summary:hover { background: var(--wash-warm); }
   .break .fix { padding: 0 18px 16px; font-size: 14.5px; color: var(--muted); }
   .break .fix strong { color: var(--teal-dark); }
@@ -230,8 +244,10 @@
   /* Ladder */
   .ladder { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
   @media (max-width: 780px) { .ladder { grid-template-columns: 1fr; } }
-  .rung { border-left: 4px solid var(--teal); background: #fff; border-radius: 0 var(--radius) var(--radius) 0; padding: 22px 22px 22px 20px; border-top: 1px solid var(--line); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .rung { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 24px 22px; }
   .rung .step { font-size: 12.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--teal-dark); margin-bottom: 8px; }
+  /* A drawn rule carries the accent instead of a heavy colored edge. */
+  .rung .step::before { content: ""; display: block; width: 26px; height: 2px; background: var(--teal); margin-bottom: 12px; }
   .rung h3 { font-size: 18px; margin-bottom: 6px; }
   .rung p { font-size: 14.5px; color: var(--muted); }
 
@@ -287,7 +303,7 @@
   @media (max-width: 780px) { .pgrid { grid-template-columns: 1fr; } }
   .principle { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius); padding: 22px; }
   .principle h3 { font-size: 17px; margin-bottom: 6px; }
-  .principle h3::before { content: "— "; color: var(--orange); }
+  .principle h3::before { content: ""; display: block; width: 22px; height: 2px; background: var(--orange); margin-bottom: 11px; }
   .principle p { font-size: 14.5px; color: #C7D2E2; }
 
   /* Playbook teaser */
@@ -311,9 +327,18 @@
   footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
   footer a { color: var(--muted); }
 
-  .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
-  .js .reveal.in { opacity: 1; transform: none; }
-  @media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; } }
+  /* Sections settle in on opacity alone; the hero owns the one authored entrance,
+     so the page doesn't repeat an identical slide-up twelve times on the way down. */
+  .js .reveal { opacity: 0; transition: opacity .6s var(--ease-out); }
+  .js .reveal.in { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; } }
+
+  .js .hero > .wrap > * { animation: hero-rise .75s var(--ease-out) both; }
+  .js .hero > .wrap > :nth-child(2) { animation-delay: .05s; }
+  .js .hero > .wrap > :nth-child(3) { animation-delay: .10s; }
+  .js .hero > .wrap > :nth-child(4) { animation-delay: .15s; }
+  .js .hero > .wrap > :nth-child(5) { animation-delay: .20s; }
+  @keyframes hero-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 
   /* Skip link */
   .skip {
@@ -332,8 +357,12 @@
     min-height: 44px; font-weight: 700; font-size: 15px; color: var(--teal-dark);
   }
   .case-more summary::-webkit-details-marker { display: none; }
-  .case-more summary::after { content: "▸"; content: "▸" / ""; font-size: 13px; }
-  .case-more[open] summary::after { content: "▾"; content: "▾" / ""; }
+  .case-more summary::after {
+    content: ""; flex: none; width: 15px; height: 15px; background: currentColor;
+    -webkit-mask: var(--icon-chevron) center / contain no-repeat; mask: var(--icon-chevron) center / contain no-repeat;
+    transition: transform .2s var(--ease-out);
+  }
+  .case-more[open] summary::after { transform: rotate(180deg); }
   .case-more summary:hover { text-decoration: underline; }
   .work-cta { margin-top: 30px; }
 
@@ -346,8 +375,12 @@
     font-size: 16px; font-weight: 700; color: var(--navy); border-radius: 12px;
   }
   .faq summary::-webkit-details-marker { display: none; }
-  .faq summary::after { content: "+"; margin-left: auto; color: var(--muted); font-weight: 700; font-size: 20px; line-height: 1; }
-  .faq[open] summary::after { content: "–"; }
+  .faq summary::after {
+    content: ""; flex: none; margin-left: auto; width: 17px; height: 17px; background: var(--muted);
+    -webkit-mask: var(--icon-chevron) center / contain no-repeat; mask: var(--icon-chevron) center / contain no-repeat;
+    transition: transform .2s var(--ease-out);
+  }
+  .faq[open] summary::after { transform: rotate(180deg); }
   .faq summary:hover { background: var(--wash); }
   .faq p { padding: 0 20px 18px; font-size: 15px; color: var(--muted); max-width: 66ch; }
 
@@ -367,7 +400,7 @@
   .opt {
     border: 1.5px solid var(--line); border-radius: 999px; padding: 9px 16px;
     font-size: 14px; font-weight: 600; color: var(--navy); cursor: pointer;
-    display: inline-flex; align-items: center; gap: 7px; background: #fff; min-height: 40px;
+    display: inline-flex; align-items: center; gap: 7px; background: #fff; min-height: 44px;
   }
   .opt input { accent-color: var(--teal-dark); margin: 0; }
   .opt:hover { border-color: var(--teal); }
@@ -401,7 +434,7 @@
         <a href="playbook.html">Playbook</a>
         <a href="#faq">FAQ</a>
       </nav>
-      <a class="btn btn-accent cta" href="https://calendar.app.google/v3L6z6QH2hd1MTpt9">Book a free audit</a>
+      <a class="btn btn-accent cta" href="https://calendar.app.google/v3L6z6QH2hd1MTpt9">Book<span class="cta-long"> a free</span> audit</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
         <span class="nav-toggle-bars" aria-hidden="true"></span>
       </button>

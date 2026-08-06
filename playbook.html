@@ -79,6 +79,7 @@
     --wash-warm: #FBF7F3;
     --radius: 14px;
     --shadow: 0 1px 2px rgba(22,38,63,.06), 0 8px 24px -12px rgba(22,38,63,.18);
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; scroll-padding-top: 84px; }
@@ -116,7 +117,7 @@
     color: var(--orange); font-weight: 800; font-size: 15px;
     display: grid; place-items: center; letter-spacing: .02em;
   }
-  .brand-name { font-weight: 700; color: var(--navy); font-size: 16px; }
+  .brand-name { font-weight: 700; color: var(--navy); font-size: 16px; white-space: nowrap; }
   .brand-name small { display: block; font-size: 11.5px; font-weight: 600; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
   .nav-cluster { display: flex; align-items: center; gap: 26px; }
   nav.links { display: flex; gap: 26px; align-items: center; }
@@ -124,6 +125,7 @@
   nav.links a:hover { color: var(--orange-dark); }
   nav.links a[aria-current="page"] { color: var(--orange-deep); }
   nav.links a.cta { color: #fff; }
+  .nav .btn.cta { white-space: nowrap; }
 
   .nav-toggle { display: none; padding: 0; border: 1px solid var(--line); background: #fff; border-radius: 10px; cursor: pointer; }
   .nav-toggle-bars { position: relative; display: block; width: 20px; height: 2px; background: var(--navy); border-radius: 2px; transition: background .15s ease; }
@@ -151,7 +153,9 @@
   }
   @media (max-width: 430px) {
     .brand-name small { display: none; }
-    .nav .btn { padding: 11px 14px; font-size: 14px; }
+    .nav .btn { padding: 11px 13px; font-size: 14px; }
+    /* The header CTA sheds its middle words rather than wrapping out of the bar. */
+    .cta-long { display: none; }
   }
 
   .btn {
@@ -238,9 +242,9 @@
   footer .wrap { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
   footer a { color: var(--muted); }
 
-  .js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
-  .js .reveal.in { opacity: 1; transform: none; }
-  @media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; } }
+  .js .reveal { opacity: 0; transition: opacity .6s var(--ease-out); }
+  .js .reveal.in { opacity: 1; }
+  @media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; } }
 
   .skip {
     position: absolute; left: -9999px; top: 0; z-index: 100;
@@ -270,7 +274,7 @@
         <a href="playbook.html" aria-current="page">Playbook</a>
         <a href="index.html#faq">FAQ</a>
       </nav>
-      <a class="btn btn-accent cta" href="https://calendar.app.google/v3L6z6QH2hd1MTpt9">Book a free audit</a>
+      <a class="btn btn-accent cta" href="https://calendar.app.google/v3L6z6QH2hd1MTpt9">Book<span class="cta-long"> a free</span> audit</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
         <span class="nav-toggle-bars" aria-hidden="true"></span>
       </button>
